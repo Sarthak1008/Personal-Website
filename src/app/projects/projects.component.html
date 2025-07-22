@@ -1,0 +1,23 @@
+<div class="project-carousel-container">
+  <h2>My Projects</h2>
+  <div class="carousel" #carousel>
+
+    @for (project of projects; track project.title) {
+      <div class="project-card" [ngStyle]="{
+        'background-image': 'url(' + project.backgroundImage + ')',
+        'background-size': 'cover',
+        'background-position': 'center'
+      }">
+        <h3 style="color: white;">{{ project.title }}</h3>
+        <p class="period" style="color: white;">{{ project.period }}</p>
+        <p class="description" style="color: white;">{{ project.description }}</p>
+        <div class="skills">
+          @for (skill of project.skills; track skill) {
+            <span class="skill-tag">{{ skill }}</span>
+          }
+        </div>
+        <a [href]="project.githubLink" target="_blank" class="github-link">View on GitHub</a>
+      </div>
+    }
+  </div>
+</div>

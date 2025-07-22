@@ -1,0 +1,51 @@
+<footer class="footer-main">
+  <div class="footer-content">
+    <div style="width:100%; display:flex; justify-content:space-between; align-items:flex-end;">
+      <div>
+        <h2 class="footer-title">&lt; DevName /&gt;</h2>
+        <div class="footer-desc">Building digital experiences that make a difference.</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="footer-quicklinks">
+          <strong>Quick Links</strong><br>
+          <a routerLink="/">Home</a> |
+          <a routerLink="/about">About</a> |
+          <a routerLink="/skills">Skills</a>
+        </div>
+        <div class="footer-connect" style="margin-top:0.5rem;">
+          <strong>Connect</strong><br>
+          <a [href]="github" target="_blank">GitHub</a> |
+          <a [href]="linkedin" target="_blank">LinkedIn</a> |
+          <a [href]="contact" target="_blank">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <hr style="width:100%;margin:1.5rem 0 1rem 0;border:0;border-top:1px solid #ffffff22;">
+    <div class="footer-socials">
+      <a [href]="email" target="_blank" aria-label="Email" class="social email">
+        <img src="https://www.logo.wine/a/logo/Gmail/Gmail-Logo.wine.svg" alt="Gmail" class="circle-img" />
+      </a>
+      <a [href]="github" target="_blank" aria-label="GitHub" class="social github">
+        <img src="https://i.pinimg.com/736x/b5/1b/78/b51b78ecc9e5711274931774e433b5e6.jpg" alt="GitHub" class="circle-img" />
+      </a>
+      <a [href]="linkedin" target="_blank" aria-label="LinkedIn" class="social linkedin">
+        <img src="https://www.svgrepo.com/show/16193/linkedin-logo.svg" alt="LinkedIn" class="circle-img" />
+      </a>
+      <a [href]="leetcode" target="_blank" aria-label="LeetCode" class="social leetcode">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/LeetCode_Logo_1.png" alt="LeetCode" class="circle-img" />
+      </a>
+      <a [href]="contact" target="_blank" aria-label="Call" class="social call">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDIAhSXAyCLLVzjTTyX2Bc5V0OpC7NbxXrtg&s" alt="Call" class="circle-img" />
+      </a>
+    </div>
+    <div class="footer-address">
+      <div class="address-details">
+        <span><strong>Address:</strong> 40 Dwarka Dham, Opposite Sanjeev Nagar, Karond Road, Bhopal</span>
+        <span><strong>Pincode:</strong> 462038</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    &copy; {{ currentYear }} Sarthak Aggarwal. All rights reserved.
+  </div>
+</footer>

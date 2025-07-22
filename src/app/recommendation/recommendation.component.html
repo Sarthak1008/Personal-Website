@@ -1,0 +1,41 @@
+<section class="recommendation-section">
+  <div class="recommendation-header">
+    <h2>Client Testimonials</h2>
+    <div class="recommendation-underline"></div>
+    <p>
+      Here's what some of my clients and colleagues have to say about working with me.
+    </p>
+  </div>
+  <div class="card-container">
+    <div class="card" *ngFor="let card of cards; trackBy: trackByCardName">
+      <div style="display: flex; flex-direction: column; align-items: center; padding-top: 2rem;">
+        <img [src]="card.image" alt="{{card.name}} photo" class="card-image" />
+        <div class="testimonial-stars" style="margin: 1rem 0;">
+          <i class="fas fa-star" style="color: #facc15;"></i>
+          <i class="fas fa-star" style="color: #facc15;"></i>
+          <i class="fas fa-star" style="color: #facc15;"></i>
+          <i class="fas fa-star" style="color: #facc15;"></i>
+          <i class="fas fa-star" style="color: #facc15;"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-description">
+          {{ card.showFullDescription ? card.description : (card.description | slice:0:180) + (card.description.length > 180 ? '...' : '') }}
+          <button *ngIf="card.description.length > 180" (click)="toggleDescription(card)" style="background:none;border:none;color:#a5b4fc;cursor:pointer;font-size:0.95rem;">
+            {{ card.showFullDescription ? 'Show less' : 'Read more' }}
+          </button>
+        </p>
+        <div style="display: flex; align-items: center; margin-top: 1.5rem;">
+          <div style="width: 42px; height: 42px; background: #ede9fe; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #4f46e5; font-size: 1.3rem; margin-right: 1rem;">
+            {{ card.name.charAt(0) }}
+          </div>
+          <div>
+            <div class="card-name">{{ card.name }}</div>
+            <div class="card-title">{{ card.title }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

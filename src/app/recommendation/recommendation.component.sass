@@ -1,0 +1,161 @@
+.card-container
+  display: flex
+  justify-content: center
+  gap: 2rem
+  flex-wrap: wrap
+
+.card
+  background: #fff
+  border-radius: 16px
+  box-shadow: 0 2px 12px rgba(79,70,229,0.08)
+  width: 340px
+  min-width: 260px
+  max-width: 360px
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  transition: box-shadow 0.2s, transform 0.2s
+  margin-bottom: 2rem
+
+  &:hover
+    box-shadow: 0 8px 32px rgba(79,70,229,0.16)
+    transform: translateY(-4px)
+
+.card-image
+  width: 84px
+  height: 84px
+  object-fit: cover
+  border-radius: 50%
+  border: 4px solid #fff
+  box-shadow: 0 2px 8px rgba(79,70,229,0.08)
+  margin-bottom: 0.5rem
+
+.card-content
+  padding: 1.2rem 1.5rem 1.5rem 1.5rem
+  display: flex
+  flex-direction: column
+  flex: 1
+
+.card-description
+  font-size: 1rem
+  color: #444
+  margin-bottom: 0.5rem
+  line-height: 1.6
+  font-style: italic
+
+.card-name
+  font-size: 1.1rem
+  font-weight: bold
+  color: #222
+
+.card-title
+  font-size: 0.98rem
+  color: #555
+
+.testimonial-stars
+  display: flex
+  gap: 0.2rem
+  font-size: 1.1rem
+
+.recommendation-section
+  background: #f7f9fb
+  padding: 4rem 0 2rem 0
+
+.recommendation-header
+  text-align: center
+  margin-bottom: 2.5rem
+
+  h2
+    font-size: 2.2rem
+    font-weight: 700
+    margin-bottom: 0.5rem
+
+  .recommendation-underline
+    width: 60px
+    height: 4px
+    background: #4f46e5
+    margin: 0.5rem auto 1.5rem auto
+    border-radius: 2px
+
+  p
+    color: #555
+    font-size: 1.15rem
+
+.card-container
+  display: flex
+  justify-content: center
+  gap: 2rem
+  flex-wrap: wrap
+
+.card
+  background: #fff
+  border-radius: 16px
+  box-shadow: 0 2px 12px rgba(79,70,229,0.08)
+  width: 340px
+  min-width: 260px
+  max-width: 360px
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  transition: box-shadow 0.2s, transform 0.2s
+  margin-bottom: 2rem
+
+  &:hover
+    box-shadow: 0 8px 32px rgba(79,70,229,0.16)
+    transform: translateY(-4px)
+
+.card-image
+  width: 84px
+  height: 84px
+  object-fit: cover
+  border-radius: 50%
+  border: 4px solid #fff
+  box-shadow: 0 2px 8px rgba(79,70,229,0.08)
+  margin-bottom: 0.5rem
+
+.card-content
+  padding: 1.2rem 1.5rem 1.5rem 1.5rem
+  display: flex
+  flex-direction: column
+  flex: 1
+
+.card-description
+  font-size: 1rem
+  color: #444
+  margin-bottom: 0.5rem
+  line-height: 1.6
+  font-style: italic
+
+.card-name
+  font-size: 1.1rem
+  font-weight: bold
+  color: #222
+
+.card-title
+  font-size: 0.98rem
+  color: #555
+
+.testimonial-stars
+  display: flex
+  gap: 0.2rem
+  font-size: 1.1rem
+
+@media (max-width: 900px)
+  .card-container
+    flex-direction: column
+    align-items: center
+    gap: 1.5rem
+  .card
+    width: 95%
+    max-width: 400px
+
+@media (max-width: 600px)
+  .recommendation-section
+    padding: 2rem 0 1rem 0
+  .recommendation-header h2
+    font-size: 1.4rem
+  .card
+    width: 100%
+    min-width: 180px
+    max-width: 100%
+    padding: 0.5rem

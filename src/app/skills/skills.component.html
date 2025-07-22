@@ -1,0 +1,52 @@
+<div class="skills-container">
+  <div class="skills-header">
+    <h2>My Skills</h2>
+    <div class="skills-underline"></div>
+    <p>
+      I've worked with a variety of technologies and frameworks. Here are the key skills I bring to the table.
+    </p>
+  </div>
+  <div class="skills-grid">
+    @for (category of skillCategories; track category.name) {
+      <div class="skill-card">
+        <div class="skill-card-icon">
+          @if (category.name === 'Frontend Development') {
+            <i class="fas fa-desktop"></i>
+          }
+          @if (category.name === 'Backend Development') {
+            <i class="fas fa-server"></i>
+          }
+          @if (category.name === 'Tools & Others') {
+            <i class="fas fa-tools"></i>
+          }
+        </div>
+        <h3>{{ category.name }}</h3>
+        <p class="skill-card-desc">
+          @if (category.name === 'Frontend Development') {
+            Creating responsive, accessible, and visually appealing user interfaces with modern frameworks and tools.
+          }
+          @if (category.name === 'Backend Development') {
+            Building robust server-side applications, APIs, and scalable web solutions.
+          }
+          @if (category.name === 'Tools & Others') {
+            Utilizing modern development tools and practices for efficient code delivery.
+          }
+        </p>
+        <div class="skill-list">
+          @for (skill of category.skills; track skill.name) {
+            <span class="skill-pill">{{ skill.name }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+  <div class="skills-bars">
+    <div class="skills-bar-row" *ngFor="let bar of skillBars">
+      <div class="skills-bar-label">{{ bar.label }}</div>
+      <div class="skills-bar-track">
+        <div class="skills-bar-fill" [style.width.%]="bar.value"></div>
+      </div>
+      <div class="skills-bar-value">{{ bar.value }}%</div>
+    </div>
+  </div>
+</div>
