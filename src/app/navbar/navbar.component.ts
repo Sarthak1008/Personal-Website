@@ -1,3 +1,4 @@
+import { SkillsComponent } from './../skills/skills.component';
 import { Component, Renderer2, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
@@ -50,6 +51,10 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  scrollTo(){
+    document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
   }
 
   downloadResume() {
