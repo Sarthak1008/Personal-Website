@@ -1,0 +1,77 @@
+<div class="life-beyond-code-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Life Beyond Code</h2>
+      <p class="section-description">
+        When I'm not crafting elegant code, you'll find me exploring the world, pursuing my passions, and creating memories. Here's a glimpse into my adventures outside the office.
+      </p>
+    </div>
+
+    <div class="gallery-container">
+      <!-- Category Filters -->
+      <div class="category-filters">
+        <button
+          *ngFor="let category of categories"
+          class="filter-btn"
+          [class.active]="activeCategory === category.key"
+          (click)="filterByCategory(category.key)">
+          {{ category.label }}
+        </button>
+      </div>
+
+      <!-- Main Showcase -->
+      <div class="main-showcase">
+        <div
+          *ngFor="let slide of showcaseSlides; let i = index"
+          class="showcase-slide"
+          [class.active]="currentSlideIndex === i"
+          [style.background-image]="'url(' + slide.image + ')'">
+          <div class="slide-overlay">
+            <div class="slide-category">{{ slide.category }}</div>
+            <div class="slide-title">{{ slide.title }}</div>
+            <div class="slide-description">{{ slide.description }}</div>
+          </div>
+        </div>
+
+        <button class="showcase-nav nav-prev" (click)="previousSlide()">‹</button>
+        <button class="showcase-nav nav-next" (click)="nextSlide()">›</button>
+      </div>
+
+      <!-- Showcase Dots -->
+      <div class="showcase-dots">
+        <div
+          *ngFor="let slide of showcaseSlides; let i = index"
+          class="dot"
+          [class.active]="currentSlideIndex === i"
+          (click)="goToSlide(i)">
+        </div>
+      </div>
+
+      <!-- Thumbnail Grid -->
+      <div class="thumbnail-grid">
+        <div
+          *ngFor="let item of filteredGalleryItems"
+          class="thumbnail"
+          [style.background-image]="'url(' + item.thumbnail + ')'"
+          (click)="openLightbox(item)">
+          <div class="thumbnail-overlay">
+            <div class="thumbnail-title">{{ item.title }}</div>
+            <div class="thumbnail-location">{{ item.location }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" [class.active]="lightboxActive" (click)="closeLightbox()">
+    <button class="lightbox-close" (click)="closeLightbox()">×</button>
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <img
+        *ngIf="selectedImage"
+        class="lightbox-image"
+        [src]="selectedImage.fullSize"
+        [alt]="selectedImage.title">
+    </div>
+  </div>
+</div>
