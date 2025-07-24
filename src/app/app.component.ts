@@ -13,6 +13,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from './projects/projects.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
