@@ -1,16 +1,18 @@
-import { ExperienceComponent } from './experience/experience.component';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from './footer/footer.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NameComponent } from './name/name.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterOutlet } from '@angular/router';
+import { NgImageSliderModule } from 'ng-image-slider';
 import { AboutComponent } from './about/about.component';
+import { ExperienceComponent } from './experience/experience.component';
+import { FooterComponent } from './footer/footer.component';
+import { LifeBeyondCodeComponent } from './life-beyond-code-component/life-beyond-code-component.component';
+import { NameComponent } from './name/name.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { SkillsComponent } from './skills/skills.component';
-import { ProjectsComponent } from './projects/projects.component';
 
 
 
@@ -19,7 +21,7 @@ import { ProjectsComponent } from './projects/projects.component';
   standalone: true,
   imports: [RouterOutlet, FooterComponent, MatToolbarModule, MatButtonModule, MatIconModule,
     NameComponent, AboutComponent, NavbarComponent, RecommendationComponent, SkillsComponent,
-    ExperienceComponent, ProjectsComponent],
+    ExperienceComponent, ProjectsComponent,LifeBeyondCodeComponent, NgImageSliderModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })

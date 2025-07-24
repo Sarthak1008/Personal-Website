@@ -1,0 +1,114 @@
+{
+  "name": "Sarthak Aggarwal",
+  "title": "Software Developer",
+  "contact": {
+    "phone": "+91 8519013280",
+    "email": "sarthak10082001@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sarthak-aggarwal-670a16194",
+    "github": "https://github.com/Sarthak1008",
+    "leetcode": "https://leetcode.com/SarthakAgg/"
+  },
+  "education": [
+    {
+      "degree": "B. Eng. in Computer Science and Engineering",
+      "gpa": "8.66",
+      "institute": "Manipal University Jaipur, India",
+      "duration": "July 2019 - July 2023",
+      "courses": [
+        "Data Structures",
+        "OOPs using Java",
+        "Cryptography and Security",
+        "Machine Learning"
+      ]
+    },
+    {
+      "level": "12th",
+      "gpa": "9.12",
+      "school": "Sagar Public School, Gandhinagar, Bhopal",
+      "duration": "April 2018 - April 2019",
+      "courses": ["Physics", "Chemistry", "Maths"]
+    }
+  ],
+  "skills": {
+    "languages": ["Java", "Python", "HTML", "CSS", "SQL", "R"],
+    "tools": [
+      "VS Code", "GitHub", "Bootstrap", "WordPress", "Tableau",
+      "Power BI", "Google Data Studio", "AWS", "GCP"
+    ],
+    "technologies": [
+      "SpringBoot", "Hibernate", "Apache Kafka", "JDBC",
+      "Gitlab", "JUnit and Mockito", "Jira"
+    ],
+    "databases": [
+      "MySQL", "MongoDB", "PostgreSQL", "AWS RDS", "Redis"
+    ],
+    "monitoring": [
+      "Prometheus", "Grafana", "ELK Stack (ElasticSearch, Logstash, Kibana)",
+      "Jaeger", "AlertManager"
+    ]
+  },
+  "experience": [
+    {
+      "role": "Software Developer",
+      "company": "LogicSoft Pvt Ltd",
+      "location": "Gurugram",
+      "duration": "June 2024 – Present",
+      "projects": [
+        {
+          "name": "FCIQMS (Food Quality Management System)",
+          "highlights": [
+            "Architected Officer Transfer Management module reducing support tickets by 60%",
+            "Built grain sample tracking with PostgreSQL handling 50,000+ samples/month",
+            "Set up monitoring with Prometheus, Grafana, ELK – reduced incident response time by 50%",
+            "Implemented Redis caching and batch processing – 40% faster APIs, 30% lower load"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "Associate Software Developer",
+      "company": "Reshita",
+      "location": "Remote",
+      "duration": "Dec 2023 – May 2024",
+      "projects": [
+        {
+          "name": "MedTech Clinic Management System",
+          "highlights": [
+            "Migrated platform to microservices – 40% more scalable",
+            "Implemented secure login (JWT, SMTP OTP) with 99.9% success rate",
+            "Added appointment scheduling, clinic data, PayPal integration – 35% less admin load"
+          ]
+        },
+        {
+          "name": "Internal Management System (IMS)",
+          "highlights": [
+            "Developed role-based secure system with Jaeger logging",
+            "Integrated Apache Kafka – reduced compute time by 50%, improved data accuracy by 25%"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "Engineer Trainee",
+      "company": "PureSoftware",
+      "location": "Noida",
+      "duration": "Feb 2023 – Nov 2023",
+      "highlights": [
+        "Built scalable microservices with Spring Boot – 40% system scalability boost",
+        "Developed UI using React + Material UI – 25% improvement in user engagement"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Doc-Aid: Clinic Management System",
+      "tech": ["Java", "Spring Boot", "MySQL"],
+      "duration": "Dec 2023 - Present",
+      "highlights": [
+        "Streamlined scheduling and prescription management for clinics",
+        "Honored by former IT Minister Ravi Shankar Prasad at official launch",
+        "Improved flexibility and care delivery in private practices"
+      ]
+    }
+  ]
+}
