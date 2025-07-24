@@ -11,10 +11,12 @@
       <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
     </nav>
     <div class="navbar-actions">
+      <div id="google_translate_element"></div>
       <button class="theme-toggle" (click)="toggleDarkMode()" aria-label="Toggle dark mode">
         <i [ngClass]="isDarkMode ? 'fas fa-moon' : 'fas fa-sun'"></i>
       </button>
       <a routerLink="/contact" class="hire-btn">Hire Me</a>
+
       <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle menu">
         <i class="fas fa-bars"></i>
       </button>
@@ -27,5 +29,6 @@
     <a routerLink="/projects" routerLinkActive="active" class="nav-link" (click)="toggleMenu()">Projects</a>
     <a routerLink="/contact" routerLinkActive="active"  class="nav-link" (click)="toggleMenu()">Contact</a>
     <a routerLink="/contact" class="hire-btn" (click)="toggleMenu()">Hire Me</a>
+    <div id="google_translate_element"></div>
   </div>
 </header>
