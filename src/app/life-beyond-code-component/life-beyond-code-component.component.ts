@@ -1,25 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { ApiService } from '../services/api.service';
 
-export interface ImageData {
-  url: string;
-  thumbnail: string;
+interface GalleryItem {
+  id: number;
+  imageUrl: string;
   title: string;
   description: string;
-  location: string;
-  date: string;
-}
-
-import { HostListener } from '@angular/core';
-
-export interface ImageData {
-  url: string;
-  thumbnail: string;
-  title: string;
-  description: string;
-  location: string;
-  date: string;
+  category: string;
 }
 
 @Component({
@@ -27,82 +16,90 @@ export interface ImageData {
   standalone: true,
   imports: [CommonModule, NgImageSliderModule],
   templateUrl: './life-beyond-code-component.component.html',
-  styleUrls: ['./life-beyond-code-component.component.sass'] // NOTE: should be `styleUrls`, not `styleUrl`
+  styleUrls: ['./life-beyond-code-component.component.sass']
 })
-export class LifeBeyondCodeComponent implements OnInit {
-  slidesList = [
-    {
-      image: '../../assets/Bhandavgarh.jpg',
-      title: 'BhandavGarh Trip',
-      subtitle: 'Exploring ancient ruins and natural beauty'
-    },
-    {
-      image: '../../assets/Kasol.jpg',
-      title: 'Kasol Adventures',
-      subtitle: 'Trekking through the Himalayan valleys'
-    },
-    {
-      image: '../../assets/Kishangarh.jpg',
-      title: 'Kishangarh Memories',
-      subtitle: 'Cultural heritage and local traditions'
-    },
-    {
-      image: '../../assets/Pushkar.jpg',
-      title: 'Pushkar Views',
-      subtitle: 'Sacred lakes and desert landscapes'
-    },
-    {
-      image: '../../assets/Tosh.jpg',
-      title: 'Tosh Valley',
-      subtitle: 'Pristine mountain views and serenity'
-    },
-    {
-      image: '../../assets/Travel.jpg',
-      title: 'Travel Diaries',
-      subtitle: 'Collecting memories around the world'
-    }
-  ];
+export class LifeBeyondCodeComponent implements OnInit, OnDestroy {
+  
+  constructor(private apiService: ApiService) {}
+quote: string = 'Travel is the only thing you buy that makes you richer';
+  slidesList: GalleryItem[] = [
+  {
+    id: 1,
+    imageUrl: '../../assets/BhandavGarh.jpg',
+    title: 'Bhangarh Fort',
+    description: 'India’s most haunted fort surrounded by legends and nestled in the Aravalli hills.',
+    category: 'Heritage'
+  },
+  {
+    id: 2,
+    imageUrl: '../../assets/Kasol.jpg',
+    title: 'Kasol',
+    description: 'A serene Himalayan village by the Parvati River, perfect for trekkers and backpackers.',
+    category: 'Mountains'
+  },
+  {
+    id: 3,
+    imageUrl: '../../assets/Kishangarh.jpg',
+    title: 'Kishangarh',
+    description: 'A city known for marble art, lakes, and the iconic Phool Mahal Palace.',
+    category: 'Heritage'
+  },
+  {
+    id: 4,
+    imageUrl: '../../assets/Pushkar.jpg',
+    title: 'Pushkar',
+    description: 'A spiritual town with holy lakes, colorful ghats, and the famous camel fair.',
+    category: 'Culture'
+  },
+  {
+    id: 5,
+    imageUrl: '../../assets/Tosh.jpeg',
+    title: 'Tosh',
+    description: 'A hidden gem in Himachal Pradesh offering breathtaking mountain views and tranquility.',
+    category: 'Mountains'
+  },
+  {
+    id: 6,
+    imageUrl: '../../assets/Travel.jpeg',
+    title: 'Wanderlust',
+    description: 'Snapshots of diverse travel experiences from forests to coastlines.',
+    category: 'Adventure'
+  }
+]
 
-  currentIndex = 0;
-  slideWidth = 0;
-  autoSlideInterval: any;
+  selectedItem: number | null = null;
 
   ngOnInit(): void {
-    this.updateSlideWidth();
-    this.startAutoSlide();
+   
   }
 
-  @HostListener('window:resize')
-  onResize() {
-    this.updateSlideWidth();
+  
+
+  ngOnDestroy(): void {
+    // Cleanup if needed
   }
 
-  updateSlideWidth() {
-    const el = document.querySelector('.slide') as HTMLElement;
-    if (el) this.slideWidth = el.clientWidth;
+  selectItem(index: number): void {
+    this.selectedItem = index;
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
   }
 
-  goToSlide(index: number) {
-    this.currentIndex = (index + this.slidesList.length) % this.slidesList.length;
-    this.resetAutoSlide();
+  closeModal(): void {
+    this.selectedItem = null;
+    document.body.style.overflow = 'auto'; // Restore scrolling
   }
 
-  nextSlide() {
-    this.goToSlide(this.currentIndex + 1);
+  @HostListener('keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.selectedItem !== null) {
+      this.closeModal();
+    }
   }
 
-  prevSlide() {
-    this.goToSlide(this.currentIndex - 1);
+  exploreMore(): void {
+    console.log('Explore more clicked');
+    // Add navigation or logic here
   }
 
-  startAutoSlide() {
-    this.autoSlideInterval = setInterval(() => this.nextSlide(), 3000);
-  }
-
-  resetAutoSlide() {
-    clearInterval(this.autoSlideInterval);
-    this.startAutoSlide();
-  }
+ 
 }
-
-

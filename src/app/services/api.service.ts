@@ -7,12 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
+  
+
   private baseUrl = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
 
-   getGreeting(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/greeting`);
+   getRandomTravelQuote(): Observable<any> {
+    return this.http.get(`https://api.quotable.io/random?tags=travel`);
   }
 
   // Example: POST request

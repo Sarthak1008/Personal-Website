@@ -1,61 +1,94 @@
-<section class="life-container max-w-4xl mx-auto my-8 p-8 bg-white rounded-2xl shadow-lg text-center">
-  <h2 class="text-3xl font-bold mb-6 text-[#3f3d56]">Life Beyond Code</h2>
+<!-- Portfolio Container -->
+<div class="portfolio-container">
+  <!-- Background Animation -->
+  <div class="background-animation">
+    <div class="floating-particles"></div>
+    <div class="gradient-overlay"></div>
+  </div>
+  <div class="horizontal-wrapper">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="portfolio-title">Life Beyond Code</h1>
+        <p class="portfolio-subtitle">
+          {{ quote }} </p>
+      </div>
+    </div>
 
-  <div class="slider-wrapper mb-8 rounded-xl overflow-hidden shadow-md">
-    <div class="slider-container">
-      <div
-        class="slides"
-        [ngStyle]="{'transform': 'translateX(-' + (currentIndex * slideWidth) + 'px)'}"
-      >
-        <div class="slide" *ngFor="let slide of slidesList">
-          <img [src]="slide.image" alt="Travel image" class="slide-image" />
-          <div class="slide-content">
-            <h3 class="text-xl font-semibold">{{ slide.title }}</h3>
-            <p class="text-sm opacity-90">{{ slide.subtitle }}</p>
+    <!-- Gallery Grid Section -->
+    <div class="gallery-grid-section">
+      <div class="masonry-grid">
+        <!-- Waterfalls - Large vertical -->
+        <div class="grid-item large-vertical" [style.background-image]="'url(' + slidesList[0].imageUrl + ')'"
+          (click)="selectItem(0)">
+          <div class="item-overlay"></div>
+          <div class="item-content">
+            <h3 class="item-title">Bhangarh Fort</h3>
+          </div>
+        </div>
+
+        <!-- Hills - Large horizontal -->
+        <div class="grid-item large-horizontal" [style.background-image]="'url(' + slidesList[1].imageUrl + ')'"
+          (click)="selectItem(1)">
+          <div class="item-overlay"></div>
+          <div class="item-content">
+            <h3 class="item-title">Kasol</h3>
+          </div>
+        </div>
+
+        <!-- Ocean - Medium square -->
+        <div class="grid-item medium-square" [style.background-image]="'url(' + slidesList[2].imageUrl + ')'"
+          (click)="selectItem(2)">
+          <div class="item-overlay"></div>
+          <div class="item-content">
+            <h3 class="item-title">Kishangarh</h3>
+          </div>
+        </div>
+
+        <!-- Rain - Medium vertical -->
+        <div class="grid-item medium-vertical" [style.background-image]="'url(' + slidesList[3].imageUrl + ')'"
+          (click)="selectItem(3)">
+          <div class="item-overlay"></div>
+          <div class="item-content">
+            <h3 class="item-title">Pushkar</h3>
+          </div>
+        </div>
+
+        <!-- Mountains - Large horizontal -->
+        <div class="grid-item large-horizontal" [style.background-image]="'url(' + slidesList[4].imageUrl + ')'"
+          (click)="selectItem(4)">
+          <div class="item-overlay"></div>
+          <div class="item-content">
+            <h3 class="item-title">Tosh</h3>
+          </div>
+        </div>
+
+        <!-- Trees - Medium square -->
+        <div class="grid-item medium-square" [style.background-image]="'url(' + slidesList[5].imageUrl + ')'"
+          (click)="selectItem(5)">
+          <div class="item-overlay"></div>
+          <div class="item-content">
+            <h3 class="item-title">Jaipur</h3>
           </div>
         </div>
       </div>
 
-      <div class="slide-nav">
-        <div class="nav-btn prev" (click)="prevSlide()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </div>
-        <div class="nav-btn next" (click)="nextSlide()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-      </div>
-    </div>
+      <!-- Beach - Large horizontal -->
 
-    <div class="dots mt-4">
-      <div
-        class="dot"
-        *ngFor="let slide of slidesList; let i = index"
-        [class.active]="i === currentIndex"
-        (click)="goToSlide(i)"
-      ></div>
     </div>
   </div>
+</div>
 
-  <div class="travel-stats grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-    <div class="stat-card bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-xl shadow-sm">
-      <div class="text-4xl font-bold text-blue-600 mb-1">6</div>
-      <div class="text-sm text-gray-600">Destinations Explored</div>
-    </div>
-    <div class="stat-card bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl shadow-sm">
-      <div class="text-4xl font-bold text-green-600 mb-1">12</div>
-      <div class="text-sm text-gray-600">Days of Adventure</div>
-    </div>
-    <div class="stat-card bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-xl shadow-sm">
-      <div class="text-4xl font-bold text-purple-600 mb-1">100+</div>
-      <div class="text-sm text-gray-600">Memories Created</div>
+
+
+<!-- Modal for selected image -->
+<div class="modal-overlay" *ngIf="selectedItem !== null" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()">×</button>
+    <img [src]="slidesList[selectedItem]?.imageUrl" [alt]="slidesList[selectedItem]?.title" class="modal-image">
+    <div class="modal-info">
+      <h3>{{ slidesList[selectedItem]?.title }}</h3>
+      <p>{{ slidesList[selectedItem]?.description }}</p>
     </div>
   </div>
-
-  <p class="text-gray-600 max-w-2xl mx-auto">
-    When I'm not coding, I love exploring new places, immersing myself in different cultures, and capturing the beauty of our world. These adventures fuel my creativity and bring fresh perspectives to my work.
-  </p>
-</section>
+</div>
