@@ -1,0 +1,100 @@
+<section id="github-analyzer" class="github-analyzer">
+  <div class="container">
+    <h2 class="section-title" style="color: white;">GitHub Repository Analyzer</h2>
+    <p style="text-align: center; margin-bottom: 3rem; color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
+      Analyze any public GitHub repository and visualize its structure organized by technologies
+    </p>
+    <div class="analyzer-container">
+      <div class="github-input-section">
+        <div class="github-input-form">
+          <div class="input-group">
+            <input
+              type="url"
+              placeholder="Enter GitHub repository URL (e.g., https://github.com/user/repo)"
+              [(ngModel)]="githubUrl"
+              (keyup.enter)="analyzeRepository()"
+            />
+            <button class="analyze-btn" [disabled]="loading" (click)="analyzeRepository()">
+              <i class="fab fa-github"></i> Analyze Repo
+            </button>
+          </div>
+          <p style="margin: 0; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">
+            Try: https://github.com/facebook/react or any public repository
+          </p>
+        </div>
+      </div>
+      <div class="loading-spinner" *ngIf="loading">
+        <div class="spinner"></div>
+        <span style="margin-left: 1rem;">Analyzing repository...</span>
+      </div>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="repo-info" *ngIf="repoInfo">
+        <div class="repo-header">
+          <img class="repo-avatar" [src]="repoInfo.owner.avatar_url" alt="Repository Owner" />
+          <div class="repo-details">
+            <h3>{{ repoInfo.full_name }}</h3>
+            <p>{{ repoInfo.description || 'No description available' }}</p>
+            <div class="repo-stats">
+              <div class="stat">
+                <i class="fas fa-star"></i>
+                <span>{{ formatNumber(repoInfo.stargazers_count) }}</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-code-branch"></i>
+                <span>{{ formatNumber(repoInfo.forks_count) }}</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-circle" [ngClass]="getTechClass(repoInfo.language)"></i>
+                <span>{{ repoInfo.language || 'N/A' }}</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-calendar"></i>
+                <span>{{ formatDate(repoInfo.updated_at) }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tech-filter" *ngIf="techNames.length > 0">
+        <h4 style="text-align: center; margin-bottom: 1rem; color: white;">Filter by Technology</h4>
+        <div class="filter-buttons">
+          <button
+            class="filter-btn"
+            [class.active]="currentFilter === 'all'"
+            (click)="filterByTechnology('all')"
+          >All Technologies</button>
+          <button
+            class="filter-btn"
+            *ngFor="let tech of techNames"
+            [class.active]="currentFilter === tech.toLowerCase()"
+            (click)="filterByTechnology(tech.toLowerCase())"
+          >{{ tech }}</button>
+        </div>
+      </div>
+      <div class="file-tree-container" *ngIf="filteredTechData">
+        <div class="no-data" *ngIf="filteredTechData.length === 0">
+          No files found for this filter.
+        </div>
+        <div *ngFor="let techSection of filteredTechData" class="tech-section">
+          <div class="tech-header" (click)="toggleTechSection(techSection.name)">
+            <div class="tech-icon" [ngClass]="techSection.class">{{ techSection.icon }}</div>
+            <span class="tech-name">{{ techSection.name }}</span>
+            <span class="file-count">{{ techSection.files.length }} files</span>
+          </div>
+          <div class="file-list" [style.display]="techSection.expanded ? 'block' : 'none'">
+            <div 
+              class="file-item"
+              *ngFor="let file of techSection.files"
+              (click)="openFile(file.path)"
+              title="Click to open file in GitHub"
+            >
+              <span class="file-icon">{{ techSection.icon }}</span>
+              <span class="file-name">{{ file.name }}</span>
+              <span class="file-size">{{ formatBytes(file.size) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

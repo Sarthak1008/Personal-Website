@@ -1,0 +1,18 @@
+<section id="journey" class="coding-journey">
+  <div class="container">
+    <h2 class="section-title">My Coding Journey</h2>
+    <div class="journey-timeline">
+      <div 
+        class="journey-item"
+        *ngFor="let item of journeyItems; let i = index"
+        [class.animate]="animatedIndices.has(i)"
+        [ngClass]="{'even': i % 2 === 1}">
+        <div class="journey-year">{{ item.year }}</div>
+        <div class="journey-content">
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

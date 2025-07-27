@@ -5,8 +5,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { AboutComponent } from './about/about.component';
+import { CodingJourneyComponent } from "./coding-journey/coding-journey.component";
 import { ExperienceComponent } from './experience/experience.component';
 import { FooterComponent } from './footer/footer.component';
+import { GithubRepoAnalyserComponent } from "./github-repo-analyser/github-repo-analyser.component";
+import { HighlightsComponent } from './highlights/highlights.component';
 import { InterestComponent } from './interest/interest.component';
 import { LifeBeyondCodeComponent } from './life-beyond-code-component/life-beyond-code-component.component';
 import { NameComponent } from './name/name.component';
@@ -22,9 +25,9 @@ import { SkillsComponent } from './skills/skills.component';
   standalone: true,
   imports: [RouterOutlet, FooterComponent, MatToolbarModule, MatButtonModule, MatIconModule,
     NameComponent, AboutComponent, NavbarComponent, RecommendationComponent, SkillsComponent,
-    ExperienceComponent, ProjectsComponent,LifeBeyondCodeComponent, NgImageSliderModule,InterestComponent],
+    ExperienceComponent, ProjectsComponent, LifeBeyondCodeComponent, NgImageSliderModule, InterestComponent, HighlightsComponent, CodingJourneyComponent, GithubRepoAnalyserComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.sass'
+  styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
   title = 'portfolio_sarthak';

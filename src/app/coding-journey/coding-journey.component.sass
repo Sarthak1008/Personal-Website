@@ -1,0 +1,52 @@
+.coding-journey
+  background: #f8f9fa
+  padding: 5rem 0
+
+  .container
+    max-width: 1000px
+    margin: 0 auto
+    position: relative
+
+  .journey-timeline
+    display: block
+
+  .journey-item
+    display: flex
+    align-items: center
+    margin-bottom: 3rem
+    opacity: 0
+    transform: translateX(-50px)
+    transition: all 0.6s ease
+
+    &.animate
+      opacity: 1
+      transform: translateX(0)
+
+    &.even
+      flex-direction: row-reverse
+      transform: translateX(50px)
+
+      &.animate
+        transform: translateX(0)
+
+  .journey-year
+    background: linear-gradient(135deg, #667eea, #764ba2)
+    color: white
+    padding: 1rem 2rem
+    border-radius: 50px
+    font-weight: bold
+    font-size: 1.2rem
+    min-width: 120px
+    text-align: center
+
+  .journey-content
+    background: white
+    padding: 2rem
+    border-radius: 15px
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    margin: 0 2rem
+    flex: 1
+
+    h4
+      color: #667eea
+      margin-bottom: 1rem
