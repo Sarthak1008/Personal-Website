@@ -7,6 +7,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { AboutComponent } from './about/about.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { FooterComponent } from './footer/footer.component';
+import { InterestComponent } from './interest/interest.component';
 import { LifeBeyondCodeComponent } from './life-beyond-code-component/life-beyond-code-component.component';
 import { NameComponent } from './name/name.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -21,7 +22,7 @@ import { SkillsComponent } from './skills/skills.component';
   standalone: true,
   imports: [RouterOutlet, FooterComponent, MatToolbarModule, MatButtonModule, MatIconModule,
     NameComponent, AboutComponent, NavbarComponent, RecommendationComponent, SkillsComponent,
-    ExperienceComponent, ProjectsComponent,LifeBeyondCodeComponent, NgImageSliderModule],
+    ExperienceComponent, ProjectsComponent,LifeBeyondCodeComponent, NgImageSliderModule,InterestComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })

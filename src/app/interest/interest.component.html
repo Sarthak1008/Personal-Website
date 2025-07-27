@@ -1,0 +1,10 @@
+<section class="interest-section">
+  <h2 class="section-title">Fun Facts & Interests</h2>
+  <div class="interest-grid">
+    <div class="interest-card" *ngFor="let interest of funFacts">
+      <div class="icon">{{ interest.icon }}</div>
+      <h3>{{ interest.title }}</h3>
+      <p>{{ interest.description }}</p>
+    </div>
+  </div>
+</section>
