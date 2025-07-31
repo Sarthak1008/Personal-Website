@@ -1,25 +1,57 @@
-<section class="stats-section">
-  <div class="container">
-    <h2 class="section-title" style="color: white; margin-bottom: 3rem;">
-      Career Highlights
-    </h2>
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-number" data-target="2">2</span>
-        <span class="stat-label">Years Experience</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="4">4</span>
-        <span class="stat-label">Projects Completed</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="60">60%</span>
-        <span class="stat-label">Support Ticket Reduction</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="80">80%</span>
-        <span class="stat-label">Handling Monitoring Issues</span>
-      </div>
-    </div>
+<!-- Floating Side Panel -->
+<div
+  class="side-panel"
+  [class.expanded]="isExpanded"
+  id="highlightsSidebar"
+  (mouseenter)="openSidebar()"
+  (mouseleave)="onPanelMouseLeave($event)"
+>
+  <!-- Panel Header -->
+  <div class="panel-header">
+    <h2 class="panel-title">Career Dashboard</h2>
+    <button class="close-btn" (click)="closeSidebar()" aria-label="Close panel">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
   </div>
-</section>
+  
+  <!-- Panel Content -->
+  <div class="panel-content">
+    <!-- Career Highlights Section -->
+    <section class="stats-section">
+      <h3 class="section-title">Career Highlights</h3>
+      <div class="stats-grid">
+        <div class="stat-item stat-highlight" data-target="2">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item stat-highlight" data-target="4">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-item stat-highlight" data-target="60">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Support Ticket Reduction %</span>
+        </div>
+        <div class="stat-item stat-highlight" data-target="80">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Monitoring Issues %</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Toggle Button -->
+<button
+  class="panel-toggle"
+  [class.open]="isExpanded"
+  (mouseenter)="openSidebar()"
+  (mouseleave)="onToggleMouseLeave($event)"
+  aria-label="Toggle career dashboard"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+  </svg>
+</button>
