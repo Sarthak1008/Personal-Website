@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { SkillsComponent } from './skills/skills.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 
 
@@ -25,7 +26,7 @@ import { SkillsComponent } from './skills/skills.component';
   standalone: true,
   imports: [RouterOutlet, FooterComponent, MatToolbarModule, MatButtonModule, MatIconModule,
     NameComponent, AboutComponent, NavbarComponent, RecommendationComponent, SkillsComponent,
-    ExperienceComponent, ProjectsComponent, LifeBeyondCodeComponent, NgImageSliderModule, InterestComponent, HighlightsComponent, CodingJourneyComponent, GithubRepoAnalyserComponent],
+    ExperienceComponent, ProjectsComponent, LifeBeyondCodeComponent, NgImageSliderModule, InterestComponent, HighlightsComponent, CodingJourneyComponent, GithubRepoAnalyserComponent,ChatbotComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })

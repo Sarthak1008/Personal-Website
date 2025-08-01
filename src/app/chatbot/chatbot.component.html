@@ -1,0 +1,49 @@
+<div class="portfolio-chatbot">
+  <button class="chatbot-fab" (click)="toggleChat()">
+    <span class="chatbot-fab-icon">💬</span>
+    <span *ngIf="!chatOpen" class="notify-dot"></span>
+  </button>
+
+  <div class="chatbot-panel" [class.open]="chatOpen">
+    <div class="chatbot-header">
+      <span class="avatar">👨‍💻</span>
+      <div>
+        <div class="title">Portfolio Bot</div>
+        <div class="subtitle">Ask about Sarthak!</div>
+      </div>
+      <span class="close-btn" (click)="toggleChat()">×</span>
+    </div>
+
+    <div class="chatbot-body" #chatBody>
+      <div
+        *ngFor="let msg of messages"
+        [ngClass]="msg.user ? 'user-msg' : 'bot-msg'"
+      >
+        <span *ngIf="msg.emoji && !msg.user" class="emoji">{{
+          msg.emoji
+        }}</span>
+        <div class="msg-text">{{ msg.text }}</div>
+      </div>
+
+      <div *ngIf="typing" class="bot-msg typing-indicator">
+        <span class="dot"></span><span class="dot"></span
+        ><span class="dot"></span>
+      </div>
+
+      <div class="options" *ngIf="currentOptions && !mainMenu">
+        <button *ngFor="let op of currentOptions" (click)="handleOption(op)">
+          <span *ngIf="op.emoji">{{ op.emoji }}</span> {{ op.title }}
+        </button>
+        <button class="back-btn" (click)="showMainMenu()">
+          <span>🏠</span> Main Menu
+        </button>
+      </div>
+
+      <div class="options" *ngIf="mainMenu">
+        <button *ngFor="let op of menuOptions" (click)="handleOption(op, true)">
+          <span *ngIf="op.emoji">{{ op.emoji }}</span> {{ op.title }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
