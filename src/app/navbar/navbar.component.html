@@ -4,11 +4,11 @@
       &lt;<span class="logo-text">Sarthak PortFolio</span>/&gt;
     </a>
     <nav class="navbar-links">
-      <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
-      <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
-      <a routerLink="/skills" routerLinkActive="active" class="nav-link">Skills</a>
-      <a routerLink="/projects" routerLinkActive="active" class="nav-link">Projects</a>
-      <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+      <a routerLink="/" routerLinkActive="active" class="nav-link" >Home</a>
+      <a routerLink="/about" routerLinkActive="active" class="nav-link" (click)="scrollTo('about')">About</a>
+      <a routerLink="/skills" routerLinkActive="active" class="nav-link"  (click)="scrollTo('skills')">Skills</a>
+      <a routerLink="/projects" routerLinkActive="active" class="nav-link"  (click)="scrollTo('projects')">Projects</a>
+      <a routerLink="/contact" routerLinkActive="active" class="nav-link" (click)="scrollTo('contact')">Contact</a>
     </nav>
     <div class="navbar-actions">
       <div id="google_translate_element"></div>

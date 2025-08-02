@@ -53,8 +53,8 @@ export class NavbarComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  scrollTo(){
-    document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+  scrollTo(sectionId: string) {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth',block: 'start' });
   }
 
   downloadResume() {
