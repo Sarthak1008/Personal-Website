@@ -1,0 +1,69 @@
+<div class="dashboard">
+  <header class="dashboard__header leetcode-header">
+    <h1 class="dashboard__title">LeetCode</h1>
+    <img src="../../assets/leetcode.png" alt="LeetCode Logo" class="dashboard__logo" />
+  </header>
+  
+
+  <section class="dashboard__stats">
+    <div class="stat-card">
+      <h3>Problems Solved</h3>
+      <div class="stat-card__value">{{ totalSolved }} <span>of {{ totalQuestions }}</span></div>
+      <div class="stat-bar stat-bar--easy"><span>Easy</span><span>{{ easySolved }}/{{ totalEasy }}</span></div>
+      <div class="stat-bar stat-bar--medium"><span>Medium</span><span>{{ mediumSolved }}/{{ totalMedium }}</span></div>
+    </div>
+    <div class="stat-card">
+      <h3>Acceptance Rate</h3>
+      <div class="stat-card__value">{{ acceptanceRate }}% <span style="padding-top: 40px;">Above Average</span></div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" ></div>
+        <div class="progress-bar__text" style="padding-top: 30px;">{{ totalSolved }}/{{ totalQuestions - totalSolved }}</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <h3>Global Ranking</h3>
+      <div class="stat-card__value">{{ ranking | number }} <span>Top 10%</span></div>
+      <div class="stat-card__meta">Estimated total users: ~400,000</div>
+      <div class="progress-bar progress-bar--ranking">
+        <div class="progress-bar__fill" [style.width.%]="(1-ranking/400000)*100"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard__main">
+    <div class="main__right">
+      <div class="card">
+        <div class="card__header">
+          <h2>Achievements</h2>
+          <span style="padding-left: 2rem;">5/10 Unlocked</span>
+        </div>
+        <div class="achievements">
+          <div class="achievement achievement--solved">
+            <div class="achievement-icon">✓</div>
+            <div class="achievement-title">500+ Solved</div>
+          </div>
+          <div class="achievement achievement--fast">
+            <div class="achievement-icon">⚡</div>
+            <div class="achievement-title">Fast Solver</div>
+          </div>
+          <div class="achievement achievement--consistent">
+            <div class="achievement-icon">🕒</div>
+            <div class="achievement-title">Consistent</div>
+          </div>
+          <div class="achievement achievement--top">
+            <div class="achievement-icon">✨</div>
+            <div class="achievement-title">Top 10%</div>
+          </div>
+          <div class="achievement achievement--contributor">
+            <div class="achievement-icon">👥</div>
+            <div class="achievement-title">Contributor</div>
+          </div>
+          <div class="achievement achievement--locked">
+            <div class="achievement-icon">🔒</div>
+            <div class="achievement-title">Hard Master</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

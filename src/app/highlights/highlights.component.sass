@@ -6,7 +6,7 @@ $glass-hover-bg: rgba(255, 255, 255, 0.15)
 $text-color: white
 $text-opacity: rgba(255, 255, 255, 0.9)
 $border-radius: 15px
-$panel-width: 320px
+$panel-width: 500px
 $panel-width-mobile: 85vw
 $transition-duration: 0.3s
 $z-index-panel: 1000
@@ -28,10 +28,11 @@ $shadow-panel: 0 20px 40px rgba(0, 0, 0, 0.3)
 .side-panel
   position: fixed
   top: 50%
-  right: 0
-  transform: translateY(-50%) translateX(100%)
+  left: 0
+  right: auto
+  transform: translateY(-50%) translateX(-100%)
   height: auto
-  max-height: 90vh
+  max-height: 100vh
   min-height: 340px // Or as needed
   width: $panel-width
   background: $primary-gradient
@@ -178,20 +179,21 @@ $shadow-panel: 0 20px 40px rgba(0, 0, 0, 0.3)
 .panel-toggle
   position: fixed
   top: 50%
-  right: 0
+  left: 0
+  right: auto
   transform: translateY(-50%)
   background: $primary-gradient
   border: none
   color: $text-color
   padding: 1rem 0.8rem
-  border-radius: 12px 0 0 12px
+  border-radius: 0 12px 12px 0
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2)
   cursor: pointer
   z-index: $z-index-panel + 1
   transition: all $transition-duration ease
   opacity: 1 !important
   display: block !important
-  animation: slide-in-from-right 0.5s ease 0.5s forwards
+  animation: slide-in-from-left 0.5s ease 0.5s forwards
 
   svg
     width: 1.5rem
@@ -200,7 +202,7 @@ $shadow-panel: 0 20px 40px rgba(0, 0, 0, 0.3)
 
   &:hover
     background: $secondary-gradient
-    transform: translateY(-50%) translateX(-5px)
+    transform: translateY(-50%) translateX(5px)
     box-shadow: -10px 0 25px rgba(0, 0, 0, 0.3)
 
   &:focus
@@ -230,6 +232,14 @@ $shadow-panel: 0 20px 40px rgba(0, 0, 0, 0.3)
   from
     opacity: 0
     transform: translateY(-50%) translateX(20px)
+  to
+    opacity: 1
+    transform: translateY(-50%) translateX(0)
+
+@keyframes slide-in-from-left
+  from
+    opacity: 0
+    transform: translateY(-50%) translateX(-20px)
   to
     opacity: 1
     transform: translateY(-50%) translateX(0)

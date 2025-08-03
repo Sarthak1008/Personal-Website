@@ -38,3 +38,13 @@
     p
       font-size: 1rem
       color: #ddd
+
+.leetcode-section .stats-grid
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 1rem
+
+@media (max-width: 768px)
+  .leetcode-section .stats-grid
+    grid-template-columns: 1fr
+    gap: 0.8rem

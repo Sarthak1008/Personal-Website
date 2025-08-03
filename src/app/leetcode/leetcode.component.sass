@@ -1,0 +1,465 @@
+.dashboard
+  font-family: 'Inter', sans-serif
+  background: linear-gradient(to bottom right, #eef2ff, #f3e8ff)
+  padding: 2rem
+  margin-top: 20px
+
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 1.5rem
+
+  &__title
+    font-size: 1.5rem
+    font-weight: 500
+    color: #1e293b
+
+  &__subtitle
+    color: #4b5563
+
+  .user-info
+    display: flex
+    align-items: center
+    background: #fff
+    border-radius: 9999px
+    padding: 0.5rem 1rem
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04)
+
+    &__avatar
+      width: 2rem
+      height: 2rem
+      background: #6366f1
+      color: #fff
+      font-weight: 500
+      border-radius: 7000px
+      display: flex
+      align-items: center
+      justify-content: center
+      font-size: 1rem
+
+    &__rank
+      margin-left: 1rem
+      color: #334155
+
+  &__stats
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 1.2rem
+    margin-bottom: 2rem
+
+    .stat-card:first-child
+      margin-left: -1.2rem // Move first card left
+
+    .stat-card:last-child
+      margin-right: -0.5rem // Give third card a bit more space
+
+  .stat-card
+    background: #fff
+    border-radius: 1rem
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08)
+    padding: 1.2rem 1rem
+
+    h3
+      color: #6366f1
+      font-size: 1rem
+      margin-bottom: 1rem
+
+    &__value
+      font-size: 1.5rem
+      font-weight: 500
+      color: #1e293b
+      margin-bottom: 1rem
+
+      span
+        font-size: 1rem
+        color: #10b981
+        margin-left: 0.5rem
+
+    .stat-bar
+      display: flex
+      justify-content: space-between
+      align-items: center
+      font-size: 0.9rem
+      margin-bottom: 0.7rem // Increased spacing
+
+      &--easy
+        color: #10b981
+
+      &--medium
+        color: #f59e0b
+
+      &--hard
+        color: #ef4444
+
+    .progress-bar
+      height: 0.5rem
+      border-radius: 9999px
+      background: #ede9fe
+      margin-top: 1rem // Increased spacing
+      width: 100%
+      position: relative
+
+      &__fill
+        height: 100%
+        border-radius: 9999px
+        background: #a78bfa
+        width: 57%
+
+      &__text
+        position: absolute
+        right: 1rem
+        top: -1.2rem
+        font-size: 0.8rem
+        color: #6d28d9
+
+      &--contrib
+        .progress-bar__fill
+          background: linear-gradient(to right, #34d399, #22c55e)
+
+      &--ranking
+        .progress-bar__fill
+          background: linear-gradient(to right, #fde68a, #f59e42)
+
+    &__meta
+      color: #64748b
+      font-size: 0.85rem
+      margin-top: 1rem // Increased spacing
+
+    &__progress
+      font-size: 0.85rem
+      display: flex
+      justify-content: space-between
+      align-items: center
+      margin-bottom: 0.3rem
+
+  &__main
+    display: flex
+    justify-content: center
+
+   
+
+    .main__right
+      flex: 1 1 100%
+      max-width: 100% // Remove fixed width
+      display: flex
+      justify-content: center
+
+      .card
+        width: 100%
+        max-width: 100% // Remove fixed width
+        margin: 0
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        .achievements
+          width: 100%
+          max-width: 480px
+          display: grid
+          grid-template-columns: repeat(3, 1fr)
+          gap: 1.2rem
+          margin: 0 auto
+
+    .card
+      background: #fff
+      border-radius: 1rem
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07)
+      padding: 1.5rem
+
+      .card__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 1rem
+
+        h2
+          font-size: 1.2rem
+          font-weight: 600
+          color: #312e81
+
+        .tab, .tab--active
+          border: none
+          background: none
+          padding: 0.5rem 1rem
+          font-size: 1rem
+          cursor: pointer
+          color: #6366f1
+          border-bottom: 2px solid transparent
+          margin-right: 0.5rem
+
+        .tab--active
+          border-bottom: 3px solid #4f46e5
+          font-weight: 600
+
+      .chart-container
+        height: 16rem
+
+    .completion-list
+      list-style: none
+      padding: 0
+      margin: 0
+
+      li
+        display: flex
+        align-items: center
+        margin-bottom: 0.5rem
+        font-size: 1rem
+
+      .bullet
+        display: inline-block
+        width: 1rem
+        height: 1rem
+        border-radius: 9999px
+        margin-right: 0.75rem
+
+        &--easy
+          background: #10b981
+
+        &--medium
+          background: #f59e0b
+
+        &--hard
+          background: #ef4444
+
+        &--total
+          background: #6366f1
+
+    .submission-calendar
+      display: flex
+      flex-wrap: wrap
+      gap: 0.2rem
+      margin-bottom: 1rem
+
+      .calendar-cell
+        display: inline-block
+        width: 0.75rem
+        height: 0.75rem
+        border-radius: 0.25rem
+        background: #f3f4f6
+
+        &.legend-cell--1
+          background: #dbeafe
+
+        &.legend-cell--2
+          background: #bfdbfe
+
+        &.legend-cell--3
+          background: #93c5fd
+
+        &.legend-cell--4
+          background: #60a5fa
+
+        &.legend-cell--5
+          background: #2563eb
+
+    .calendar-legend
+      display: flex
+      align-items: center
+      gap: 0.5rem
+      font-size: 0.85rem
+      color: #6b7280
+
+      .legend-bar
+        display: flex
+        gap: 0.1rem
+
+      .legend-cell
+        width: 0.75rem
+        height: 0.75rem
+        border-radius: 0.15rem
+        display: inline-block
+
+        &--1
+          background: #dbeafe
+
+        &--2
+          background: #bfdbfe
+
+        &--3
+          background: #93c5fd
+
+        &--4
+          background: #60a5fa
+
+        &--5
+          background: #2563eb
+
+    .calendar-total
+      color: #64748b
+      font-size: 0.9rem
+
+    .achievements
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      gap: 1rem
+
+      .achievement
+        background: #ede9fe
+        border-radius: 9999px
+        padding: 0.6rem 0.5rem
+        text-align: center
+        font-size: 0.85rem
+
+        &--solved
+          background: linear-gradient(to right,#a7f3d0,#6ee7b7)
+
+        &--fast
+          background: linear-gradient(to right,#60a5fa,#818cf8)
+
+        &--consist
+          background: linear-gradient(to right,#c7d2fe,#a5b4fc)
+
+        &--top
+          background: linear-gradient(to right,#fde68a,#f59e42)
+
+        &--contrib
+          background: linear-gradient(to right,#fecaca,#fca5a5)
+
+        &.locked
+          opacity: 0.3
+
+  &__recommendations
+    .recommendations__table-wrap
+      overflow-x: scroll
+
+    .recommendations
+      width: 100%
+      border-collapse: collapse
+
+      th, td
+        padding: 0.7rem 1.1rem
+        text-align: left
+        font-size: 0.95rem
+
+      th
+        color: #6b7280
+        font-weight: 700
+        background: #f3f4f6
+
+      td
+        background: #fff
+
+      tr:not(:last-child) td
+        border-bottom: 1px solid #e5e7eb
+
+      button
+        color: #4f46e5
+        background: none
+        border: none
+        cursor: pointer
+        font-weight: 500
+
+    .refresh
+      color: #6366f1
+      border: none
+      background: none
+      font-size: 1rem
+      cursor: pointer
+
+.achievements
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 1rem
+
+.achievement
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 1rem
+  border-radius: 12px
+  text-align: center
+  transition: transform 0.2s ease
+
+  &:hover:not(&--locked)
+    transform: translateY(-2px)
+
+  &--solved
+    background: linear-gradient(to bottom, #d1fae5, #a7f3d0)
+
+    .achievement-icon
+      background: #10b981
+
+  &--fast
+    background: linear-gradient(to bottom, #dbeafe, #93c5fd)
+
+    .achievement-icon
+      background: #3b82f6
+
+  &--consistent
+    background: linear-gradient(to bottom, #e0e7ff, #c7d2fe)
+
+    .achievement-icon
+      background: #8b5cf6
+
+  &--top
+    background: linear-gradient(to bottom, #fef3c7, #fde68a)
+
+    .achievement-icon
+      background: #f59e0b
+
+  &--contributor
+    background: linear-gradient(to bottom, #fee2e2, #fecaca)
+
+    .achievement-icon
+      background: #ef4444
+
+  &--locked
+    opacity: 0.4
+    background: #f3f4f6
+
+    .achievement-icon
+      background: #9ca3af
+
+.achievement-icon
+  width: 48px
+  height: 48px
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  margin-bottom: 0.75rem
+  font-size: 24px
+  color: white
+
+.achievement-title
+  font-size: 0.85rem
+  font-weight: 500
+  color: #374151
+
+// Responsive design
+@media (max-width: 768px)
+  .dashboard
+    &__stats
+      grid-template-columns: 1fr
+
+  .achievements
+    grid-template-columns: repeat(2, 1fr)
+
+@media (max-width: 768px)
+  .dashboard__stats
+    grid-template-columns: 1fr
+    .stat-card
+      margin-left: 0
+      margin-right: 0
+
+  .dashboard__main .main__right .card
+    max-width: 100%
+    .achievements
+      grid-template-columns: repeat(2, 1fr)
+      max-width: 100%
+
+.leetcode-header
+  display: flex
+  align-items: center
+  margin-bottom: 0.5rem
+
+.dashboard__logo
+  width: 60px
+  height: 60px
+  object-fit: contain
+
+.dashboard__title
+  font-size: 2rem
+  font-weight: 600
+  color: #1e293b

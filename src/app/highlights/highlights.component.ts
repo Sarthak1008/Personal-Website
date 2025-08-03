@@ -3,11 +3,12 @@ import {
   AfterViewInit, Component, ElementRef, HostListener,
   Inject, PLATFORM_ID, ViewChild
 } from '@angular/core';
+import { LeetcodeComponent } from "../leetcode/leetcode.component";
 
 @Component({
   selector: 'app-highlights',
   standalone: true,
-  imports: [],
+  imports: [LeetcodeComponent],
   templateUrl: './highlights.component.html',
   styleUrl: './highlights.component.sass'
 })

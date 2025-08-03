@@ -13,8 +13,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-   getRandomTravelQuote(): Observable<any> {
-    return this.http.get(`https://api.quotable.io/random?tags=travel`);
+   getLeetCodeData(): Observable<any> {
+    return this.http.get(`https://leetcode-stats-api.herokuapp.com/SarthakAgg/`);
   }
 
   // Example: POST request
