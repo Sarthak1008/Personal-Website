@@ -33,7 +33,8 @@ export class ChatbotComponent {
     { id: 'skills', title: 'Skills & Tech Stack', emoji: '🛠️' },
     { id: 'projects', title: 'Projects', emoji: '🚀' },
     { id: 'education', title: 'Education', emoji: '🎓' },
-    { id: 'contact', title: 'Contact', emoji: '📞' }
+    { id: 'contact', title: 'Contact', emoji: '📞' },
+    { id: 'recruiter', title: 'For Recruiters', emoji: '📄' }
   ];
 
   // Answers + follow up options by section
@@ -45,7 +46,7 @@ export class ChatbotComponent {
     }
   } = {
       'notice': {
-        msg: "I'm currently serving my notice period and will be available to join soon. Always committed to smooth transitions! Would you like to know about my experience or tech stack?",
+        msg: "Notice period: 45 days. Available to join after smooth transition!",
         emoji: '⏱️',
         options: [
           { id: 'exp', title: 'Experience', emoji: '💼' },
@@ -53,7 +54,7 @@ export class ChatbotComponent {
         ]
       },
       'exp': {
-        msg: `I have 1+ years’ experience:\n\n• Software Developer - LogicSoft (2024–Now)\n• Associate Software Developer - Reshita (2023–24)\n• Engineer Trainee - PureSoftware (2023)\n\nCurious about a project or my responsibilities at any company?`,
+        msg: `1.5-2 years experience:\n\n• Software Developer - LogicSoft (2024–Now)\n• Associate Software Developer - Reshita (2023–24)\n• Engineer Trainee - PureSoftware (2023)\n\nWant details about any company?`,
         emoji: '💼',
         options: [
           { id: 'logicsoft', title: 'LogicSoft', emoji: '🏢' },
@@ -62,7 +63,7 @@ export class ChatbotComponent {
         ]
       },
       'logicsoft': {
-        msg: "At LogicSoft, I built modules for FCIQMS - like an Officer Transfer Management module (reduced tickets by 60%), grain sample tracking (50k+ monthly), and monitoring with Prometheus, Grafana and ELK. Improved API speed by 40% via Redis.",
+        msg: "Built FCIQMS modules: Officer Transfer Management (60% fewer tickets), grain tracking (50k+ monthly), monitoring with Prometheus/Grafana/ELK. Improved API speed 40% with Redis.",
         emoji: '🏢',
         options: [
           { id: 'skills', title: 'Tech Stack', emoji: '🛠️' },
@@ -70,7 +71,7 @@ export class ChatbotComponent {
         ]
       },
       'reshita': {
-        msg: "At Reshita, I migrated a MedTech Clinic Management system to microservices (Spring Boot, MySQL), handled secure JWT login, reduced admin time by 35%, and added PayPal payments. Also built an agile internal management & monitoring system with Kafka and Jaeger.",
+        msg: "Migrated MedTech system to microservices (Spring Boot, MySQL). Added JWT security, PayPal payments, reduced admin time 35%. Built monitoring system with Kafka/Jaeger.",
         emoji: '🏢',
         options: [
           { id: 'skills', title: 'Tech Stack', emoji: '🛠️' },
@@ -78,7 +79,7 @@ export class ChatbotComponent {
         ]
       },
       'puresoftware': {
-        msg: "At PureSoftware I built UIs in React/Material-UI (got 25% more user interaction), and backends in Spring Boot - boosting system scalability 40%.",
+        msg: "Built React/Material-UI interfaces (25% more user engagement) and Spring Boot backends (40% better scalability).",
         emoji: '🏢',
         options: [
           { id: 'skills', title: 'Tech Stack', emoji: '🛠️' },
@@ -86,7 +87,7 @@ export class ChatbotComponent {
         ]
       },
       'skills': {
-        msg: "Core skills: Java, Python, SpringBoot, Hibernate, Kafka, MySQL, PostgreSQL, MongoDB, Redis, HTML/CSS, SQL. Tools: VS Code, GitHub, AWS, GCP, Prometheus, Grafana, ELK Stack, Jaeger, Power BI.\n\nWant to know about Monitoring & Observability or Coding Projects?",
+        msg: "Backend: Java, Python, SpringBoot, Hibernate, Kafka\nDatabases: MySQL, PostgreSQL, MongoDB, Redis\nFrontend: HTML/CSS, React\nTools: AWS, GCP, Docker, Git\n\nSpecialized in monitoring & observability?",
         emoji: '🛠️',
         options: [
           { id: 'monitoring', title: 'Monitoring/Observability', emoji: '📊' },
@@ -95,7 +96,7 @@ export class ChatbotComponent {
         ]
       },
       'monitoring': {
-        msg: "Worked with Prometheus, Grafana, ELK Stack & Jaeger to set up alerting, real-time dashboards, and incident tracing – cut incident resolution time by 50%.",
+        msg: "Expert with Prometheus, Grafana, ELK Stack & Jaeger. Set up real-time dashboards and alerting - reduced incident resolution time by 50%.",
         emoji: '📊',
         options: [
           { id: 'skills', title: 'Tech Stack', emoji: '🛠️' },
@@ -103,15 +104,15 @@ export class ChatbotComponent {
         ]
       },
       'projects': {
-        msg: "Main project: Doc-Aid – a Clinic Management System (Java, SpringBoot, MySQL) for appointments and prescriptions; got an award from former IT Minister Ravi Shankar Prasad. Want details?",
+        msg: "Flagship: Doc-Aid Clinic Management System (Java, SpringBoot, MySQL). Awarded by former IT Minister Ravi Shankar Prasad for innovation.",
         emoji: '🚀',
         options: [
-          { id: 'docaid', title: 'Doc-Aid', emoji: '🏆' },
+          { id: 'docaid', title: 'Doc-Aid Details', emoji: '🏆' },
           { id: 'back', title: 'Back', emoji: '⬅️' }
         ]
       },
       'docaid': {
-        msg: "Doc-Aid: End-to-end clinic/doctor workflow, built & deployed in 2023-2024. Awarded for technical innovation at its official launch. Made for modern, flexible care.",
+        msg: "Complete clinic workflow solution: appointments, prescriptions, patient management. Built 2023-24, officially recognized for technical excellence.",
         emoji: '🏆',
         options: [
           { id: 'projects', title: 'Other Projects', emoji: '🚀' },
@@ -119,7 +120,7 @@ export class ChatbotComponent {
         ]
       },
       'education': {
-        msg: "B.Tech in Computer Science (Manipal University Jaipur, 2019–23, GPA 8.66). Major courses: Data Structures, Java OOPs, Crypto & Security, ML. School: Sagar Public School, Bhopal.",
+        msg: "B.Tech Computer Science, Manipal University Jaipur (2019–23, GPA 8.66). Focus: Data Structures, Java OOPs, Security, ML.",
         emoji: '🎓',
         options: [
           { id: 'contact', title: 'Contact', emoji: '📞' },
@@ -127,8 +128,15 @@ export class ChatbotComponent {
         ]
       },
       'contact': {
-        msg: "You can reach me at +91 8519013280 or on LinkedIn, GitHub and LeetCode (links in portfolio header). Open to roles and collaborations!",
+        msg: "📱 +91 8519013280\n📧 sarthak10082001@gmail.com\n🔗 LinkedIn, GitHub, LeetCode (see header)\n\nOpen to roles and collaborations!",
         emoji: '📞',
+        options: [
+          { id: 'main', title: 'Main Menu', emoji: '🏠' }
+        ]
+      },
+      'recruiter': {
+        msg: `**Quick Recruiter Info:**\n\n👨‍💻 Software Developer @ LogicSoft\n⏱️ Notice: 45 days\n📍 Prefer: Gurgaon (main), open to Noida/Faridabad/Delhi/Pune\n💻 Mode: Remote/Hybrid preferred, on-site works too\n💰 Current: ₹6.5L | Expected: ₹11L\n📝 Type: Full-time preferred, open to contract/freelance\n🎯 Role: Java Full Stack Developer\n👥 Team: Currently leading team, client-facing comfortable\n📧 sarthak10082001@gmail.com`,
+        emoji: '📄',
         options: [
           { id: 'main', title: 'Main Menu', emoji: '🏠' }
         ]
@@ -137,7 +145,7 @@ export class ChatbotComponent {
 
   messages: Message[] = [{
     user: false,
-    text: "👋 Hey there! I'm your interactive portfolio assistant. What would you like to know about Sarthak Aggarwal?",
+    text: "👋 Hi! I'm Sarthak's portfolio assistant. What would you like to know?",
     emoji: '👋'
   }];
 
@@ -192,4 +200,3 @@ export class ChatbotComponent {
     }, 90);
   }
 }
-
