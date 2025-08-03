@@ -17,6 +17,10 @@ export class ApiService {
     return this.http.get(`https://leetcode-stats-api.herokuapp.com/SarthakAgg/`);
   }
 
+  getGitHubData(): Observable<any> {
+    return this.http.get(`https://github-contributions-api.jogruber.de/v4/sarthak1008`);
+  }
+
   // Example: POST request
   postMessage(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/message`, data);

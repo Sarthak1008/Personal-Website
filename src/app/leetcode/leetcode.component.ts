@@ -2,6 +2,11 @@ import { DecimalPipe } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ApiService } from '../services/api.service'; // Adjust path as needed
 
+interface ContributionData {
+  total: Record<string, number>;
+  contributions: any[]; // or proper type for contributions
+}
+
 @Component({
   selector: 'app-leetcode',
   standalone: true,
@@ -28,6 +33,8 @@ export class LeetcodeComponent implements AfterViewInit {
   reputation = 0;
   submissionCalendarData: { [key: string]: number } = {};
   totalSubmissions = 0;
+  totalContributions = 0;
+  longestStreak = 0;
 
   constructor(private apiService: ApiService) { }
 
@@ -143,5 +150,30 @@ export class LeetcodeComponent implements AfterViewInit {
         });
       });
     });
+
+    this.apiService.getGitHubData().subscribe((data: ContributionData) => {
+      const totals = Object.values(data.total); // now totals inferred as number[]
+
+      const totalContributions = totals.reduce((sum, val) => sum + val, 0);
+      this.totalContributions = totalContributions;
+      console.log('Total contributions:', this.totalContributions);
+      let currentStreak = 0;
+      let longestStreak = 0;
+
+      for (const day of data.contributions) {
+        if (day.count > 0) {
+          currentStreak++;
+          if (currentStreak > longestStreak) longestStreak = currentStreak;
+        } else {
+          currentStreak = 0;
+        }
+      }
+      this.longestStreak = longestStreak;
+      console.log('Longest streak:', this.longestStreak);
+      
+      
+    });
+
+
   }
 }
