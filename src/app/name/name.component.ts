@@ -16,13 +16,18 @@ export class NameComponent implements OnInit {
       this.typeWriter();
     }
   }
+
+
 document:any
   typeWriter() {
     const element = document.querySelector('.typewriter') as HTMLElement;
     const textArray = [
-      "Java Full Stack Developer",
-      "Writer",
-      "Travel Enthusiast"
+      "Writer 📜",
+      "Travel Enthusiast 🏔",
+      "Coffee Enthusiast ☕",
+      "Cricket & Football Sportsman 🏏",
+      "Tech Stack Explorer 🛠️",
+      "Movie Enthusiast 🎞"
     ];
     let arrayIndex = 0;
     let charIndex = 0;

@@ -1,3 +1,45 @@
+<style>
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.profile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Initially hide the badge */
+.available-badge {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 0;               /* Align to the right */
+  width: 50%;             /* Set width to 50% */
+  background-color: #ffa500;
+  padding: 6px 12px;
+  border-radius: 6px 0 0 6px; /* Rounded only on the left side */
+  font-size: 18px;
+  color: white;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Hover effect */
+.profile-image-container:hover .profile-img {
+  transform: scale(1.1);
+}
+
+.profile-image-container:hover .available-badge {
+  display: block;
+}
+
+</style>
+
+
 <section class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
@@ -5,31 +47,86 @@
         <span class="code-font">&lt;</span>
         <span class="logo-text">Sarthak Aggarwal</span>
         <span class="code-font">/&gt;</span>
+
+        <!-- <div class="work-sticker">
+          <div class="sticker-content">
+            <div class="sticker-icon"><img src="../../assets/icon_sarthak.png" style="width: 50px;"></div>
+            <div class="sticker-text">
+              <div class="sticker-text-main">LET ME</div>
+              <div class="sticker-text-main">WORK!!</div>
+              <div class="sticker-text-sub">ayoo!!</div>
+            </div>
+          </div>
+        </div> -->
       </div>
       <h1 class="main-heading">Java Full Stack Developer</h1>
       <h2 class="typewriter"></h2>
       <p class="hero-desc">
-        Software Engineer | B.Tech in Computer Science<br>
-        Building scalable web applications with Java, Spring Boot and Monitoring tools.
+        Software Engineer | B.Tech in Computer Science<br />
+        Building scalable web applications with Java, Spring Boot and Monitoring
+        tools.
       </p>
       <div class="hero-actions">
         <a routerLink="/projects" class="btn btn-primary">View My Work</a>
         <a routerLink="/contact" class="btn btn-outline">Contact Me</a>
       </div>
       <div class="hero-socials">
-        <a href="https://github.com/Sarthak1008" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/sarthak-aggarwal-670a16194/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:sarthak10082001@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://leetcode.com/u/SarthakAgg/" target="_blank" aria-label="LeetCode"><i class="fa-solid fa-code"></i></a>
+        <a
+          href="https://github.com/Sarthak1008"
+          target="_blank"
+          aria-label="GitHub"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/sarthak-aggarwal-670a16194/"
+          target="_blank"
+          aria-label="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="mailto:sarthak10082001@gmail.com" aria-label="Email"
+          ><i class="fas fa-envelope"></i
+        ></a>
+        <a
+          href="https://leetcode.com/u/SarthakAgg/"
+          target="_blank"
+          aria-label="LeetCode"
+          ><i class="fa-solid fa-code"></i
+        ></a>
       </div>
     </div>
-    <div class="hero-image">
+<div class="profile-image-container">
+  <div class="profile-bg"></div>
+
+  <img
+    src="../../assets/icon_sarthak.png"
+    alt="Profile Image"
+    class="profile-img"
+  />
+
+  <div class="available-badge">
+    <span class="dot"></span>
+    <span>Ayoo!! Let me Work</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="hero-image" style="display: none;">
       <div class="profile-bg"></div>
-      <img src="../../assets/photo_with_ravishankar.jpeg"
-           alt="Profile Image" class="profile-img" />
-      <div class="available-badge">
+
+      <img
+        src="../../assets/icon_sarthak.png"
+        alt="Profile Image"
+        class="profile-img"
+      />
+      <div style="background-color: #ffa500;" class="available-badge">
         <span class="dot"></span>
-        <span>Available for work</span>
+        <span >Ayoo!! Let me Work</span>
       </div>
     </div>
   </div>
