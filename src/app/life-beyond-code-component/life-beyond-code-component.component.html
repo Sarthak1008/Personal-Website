@@ -1,7 +1,9 @@
 <!-- Portfolio Container -->
 <div class="portfolio-container">
   <!-- Background Animation -->
+
   <div class="background-animation">
+
     <div class="floating-particles"></div>
 
     <div class="gradient-overlay"></div>
@@ -10,9 +12,11 @@
     <!-- Hero Section -->
     <div class="hero-section">
       <div class="hero-content">
+        <div class="starry-background"></div>
         <h1 class="portfolio-title">Life Beyond Code</h1>
         <p class="portfolio-subtitle">
-          {{ quote }} </p>
+          {{ quote }}
+        </p>
       </div>
     </div>
 
@@ -20,8 +24,11 @@
     <div class="gallery-grid-section">
       <div class="masonry-grid">
         <!-- Waterfalls - Large vertical -->
-        <div class="grid-item large-vertical" [style.background-image]="'url(' + slidesList[0].imageUrl + ')'"
-          (click)="selectItem(0)">
+        <div
+          class="grid-item large-vertical"
+          [style.background-image]="'url(' + slidesList[0].imageUrl + ')'"
+          (click)="selectItem(0)"
+        >
           <div class="item-overlay"></div>
           <div class="item-content">
             <h3 class="item-title">Bhangarh Fort</h3>
@@ -29,8 +36,11 @@
         </div>
 
         <!-- Hills - Large horizontal -->
-        <div class="grid-item large-horizontal" [style.background-image]="'url(' + slidesList[1].imageUrl + ')'"
-          (click)="selectItem(1)">
+        <div
+          class="grid-item large-horizontal"
+          [style.background-image]="'url(' + slidesList[1].imageUrl + ')'"
+          (click)="selectItem(1)"
+        >
           <div class="item-overlay"></div>
           <div class="item-content">
             <h3 class="item-title">Kasol</h3>
@@ -38,8 +48,11 @@
         </div>
 
         <!-- Ocean - Medium square -->
-        <div class="grid-item medium-square" [style.background-image]="'url(' + slidesList[2].imageUrl + ')'"
-          (click)="selectItem(2)">
+        <div
+          class="grid-item medium-square"
+          [style.background-image]="'url(' + slidesList[2].imageUrl + ')'"
+          (click)="selectItem(2)"
+        >
           <div class="item-overlay"></div>
           <div class="item-content">
             <h3 class="item-title">Kishangarh</h3>
@@ -47,8 +60,11 @@
         </div>
 
         <!-- Rain - Medium vertical -->
-        <div class="grid-item medium-vertical" [style.background-image]="'url(' + slidesList[3].imageUrl + ')'"
-          (click)="selectItem(3)">
+        <div
+          class="grid-item medium-vertical"
+          [style.background-image]="'url(' + slidesList[3].imageUrl + ')'"
+          (click)="selectItem(3)"
+        >
           <div class="item-overlay"></div>
           <div class="item-content">
             <h3 class="item-title">Pushkar</h3>
@@ -56,8 +72,11 @@
         </div>
 
         <!-- Mountains - Large horizontal -->
-        <div class="grid-item large-horizontal" [style.background-image]="'url(' + slidesList[4].imageUrl + ')'"
-          (click)="selectItem(4)">
+        <div
+          class="grid-item large-horizontal"
+          [style.background-image]="'url(' + slidesList[4].imageUrl + ')'"
+          (click)="selectItem(4)"
+        >
           <div class="item-overlay"></div>
           <div class="item-content">
             <h3 class="item-title">Tosh</h3>
@@ -65,8 +84,11 @@
         </div>
 
         <!-- Trees - Medium square -->
-        <div class="grid-item medium-square" [style.background-image]="'url(' + slidesList[5].imageUrl + ')'"
-          (click)="selectItem(5)">
+        <div
+          class="grid-item medium-square"
+          [style.background-image]="'url(' + slidesList[5].imageUrl + ')'"
+          (click)="selectItem(5)"
+        >
           <div class="item-overlay"></div>
           <div class="item-content">
             <h3 class="item-title">Jaipur</h3>
@@ -75,18 +97,19 @@
       </div>
 
       <!-- Beach - Large horizontal -->
-
     </div>
   </div>
 </div>
-
-
 
 <!-- Modal for selected image -->
 <div class="modal-overlay" *ngIf="selectedItem !== null" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <button class="modal-close" (click)="closeModal()">×</button>
-    <img [src]="slidesList[selectedItem]?.imageUrl" [alt]="slidesList[selectedItem]?.title" class="modal-image">
+    <img
+      [src]="slidesList[selectedItem]?.imageUrl"
+      [alt]="slidesList[selectedItem]?.title"
+      class="modal-image"
+    />
     <div class="modal-info">
       <h3>{{ slidesList[selectedItem]?.title }}</h3>
       <p>{{ slidesList[selectedItem]?.description }}</p>
