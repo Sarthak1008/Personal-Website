@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit,Inject, PLATFORM_ID} from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-name',
@@ -10,7 +11,7 @@ import { Component, OnInit,Inject, PLATFORM_ID} from '@angular/core';
 })
 export class NameComponent implements OnInit {
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.typeWriter();
@@ -18,42 +19,70 @@ export class NameComponent implements OnInit {
   }
 
 
-document:any
+  document: any
   typeWriter() {
     const element = document.querySelector('.typewriter') as HTMLElement;
     const textArray = [
-      "Writer 📜",
-      "Travel Enthusiast 🏔",
-      "Coffee Enthusiast ☕",
-      "Cricket & Football Sportsman 🏏",
-      "Tech Stack Explorer 🛠️",
-      "Movie Enthusiast 🎞"
+      'Writer <span class="type-icon">✍️</span>',
+      'Travel Enthusiast <span class="type-icon">✈️</span>',
+      'Coffee Enthusiast <span class="type-icon">☕</span>',
+      'Cricket & Football Sportsman <span class="type-icon">⚽🏏</span>',
+      'Tech Stack Explorer <span class="type-icon">💻</span>',
+      'Movie Enthusiast <span class="type-icon">🎬</span>'
     ];
     let arrayIndex = 0;
     let charIndex = 0;
 
     const type = () => {
-      if (charIndex < textArray[arrayIndex].length) {
-        element.textContent += textArray[arrayIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(type, 120);
-      } else {
-        setTimeout(erase, 1800);
-      }
+      const currentHTML = textArray[arrayIndex];
+      const dummy = document.createElement('div');
+      dummy.innerHTML = currentHTML;
+      const iconHTML = dummy.querySelector('.type-icon')?.outerHTML || '';
+      const text = dummy.textContent?.replace(/\s+/g, ' ').trim() || '';
+
+      if (charIndex <= text.length) {
+  element.innerHTML = '';  // clear first!
+  element.innerHTML = `${text.substring(0, charIndex)}`;
+  charIndex++;
+  setTimeout(type, 120);
+} else {
+  element.innerHTML = '';  // clear before final render
+  element.innerHTML = `${text} ${iconHTML}`;
+  setTimeout(erase, 1800);
+}
     };
 
     const erase = () => {
-      if (charIndex > 0) {
-        element.textContent = textArray[arrayIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(erase, 60);
-      } else {
-        arrayIndex = (arrayIndex + 1) % textArray.length;
-        setTimeout(type, 300);
-      }
+      const currentHTML = textArray[arrayIndex];
+      const dummy = document.createElement('div');
+      dummy.innerHTML = currentHTML;
+      const text = dummy.textContent?.replace(/\s+/g, ' ').trim() || '';
+
+     if (charIndex > 0) {
+  element.innerHTML = '';  // clear first!
+  element.innerHTML = `${text.substring(0, charIndex - 1)}`;
+  charIndex--;
+  setTimeout(erase, 60);
+} else {
+  arrayIndex = (arrayIndex + 1) % textArray.length;
+  setTimeout(type, 300);
+}
     };
 
+
     type();
+  }
+
+  dontClick(): void {
+    debugger
+    if (isPlatformBrowser(this.platformId)) {
+      confetti({
+        particleCount: 120,
+        spread: 180,
+        origin: { y: 0.6 },
+        colors: ['#bb0000', '#ffffff', '#0000bb', '#ff69b4', '#FFD700']
+      });
+    }
   }
 }
 
