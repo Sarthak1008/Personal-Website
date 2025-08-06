@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import confetti from 'canvas-confetti';
 
@@ -6,7 +6,7 @@ import confetti from 'canvas-confetti';
   selector: 'app-name',
   standalone: true,
   templateUrl: './name.component.html',
-  imports: [],
+  imports: [CommonModule],
   styleUrls: ['./name.component.sass']
 })
 export class NameComponent implements OnInit {
