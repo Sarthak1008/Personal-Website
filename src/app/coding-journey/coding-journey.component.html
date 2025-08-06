@@ -1,18 +1,110 @@
 <section id="journey" class="coding-journey">
+  <div class="floating-particles"></div>
   <div class="container">
     <h2 class="section-title">My Coding Journey</h2>
-    <div class="journey-timeline">
-      <div 
-        class="journey-item"
-        *ngFor="let item of journeyItems; let i = index"
-        [class.animate]="animatedIndices.has(i)"
-        [ngClass]="{'even': i % 2 === 1}">
-        <div class="journey-year">{{ item.year }}</div>
-        <div class="journey-content">
-          <h4>{{ item.title }}</h4>
-          <p>{{ item.description }}</p>
+
+    <div class="timeline-wrapper">
+      <!-- Curvy timeline path -->
+      <div class="timeline-path">
+        <svg viewBox="0 0 1000 1800" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <path #timelineCurve
+                d="M 200 100
+                   Q 400 150, 500 250
+                   Q 600 350, 800 400
+                   Q 900 450, 800 600
+                   Q 700 750, 200 800
+                   Q 100 850, 200 1000
+                   Q 300 1150, 800 1200
+                   Q 900 1250, 800 1400
+                   Q 700 1550, 500 1600"
+                stroke="url(#pathGradient)"
+                stroke-width="6"
+                fill="none"
+                filter="url(#glow)"
+                stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Walking person -->
+      <div class="walking-person" #walkingPerson>
+        <span class="person-icon">🚶‍♂️</span>
+      </div>
+
+      <!-- Timeline dots -->
+      <div class="timeline-dot"
+           *ngFor="let dot of timelineDots; let i = index"
+           [style.left.%]="dot.left"
+           [style.top.px]="dot.top"
+           (click)="scrollToItem(i)">
+      </div>
+
+      <!-- Journey items -->
+      <div class="timeline-item"
+           *ngFor="let item of journeyItems; let i = index"
+           [class.visible]="animatedIndices.has(i)"
+           [ngClass]="getItemClass(i)"
+           [style.top.px]="getItemTop(i)"
+           (click)="openModal(i)">
+        <div class="timeline-content">
+          <div class="year-badge">{{ item.year }}</div>
+          <h3 class="milestone-title">{{ item.title }}</h3>
+          <p class="milestone-description">{{ item.description }}</p>
+          <div class="milestone-skills" *ngIf="item.skills">
+            <span class="skill-tag"
+                  *ngFor="let skill of item.skills"
+                  (click)="showSkillInfo(skill, $event)">
+              {{ skill }}
+            </span>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal Windows -->
+  <div class="modal"
+       *ngFor="let item of journeyItems; let i = index"
+       [id]="'modal' + i"
+       [style.display]="activeModal === i ? 'block' : 'none'"
+       (click)="closeModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>{{ getModalIcon(i) }} {{ item.title }} ({{ item.year }})</h2>
+      <p>{{ item.modalDescription || item.description }}</p>
+      <p *ngIf="item.achievements"><strong>Key Achievements:</strong></p>
+      <ul *ngIf="item.achievements" class="achievements-list">
+        <li *ngFor="let achievement of item.achievements">{{ achievement }}</li>
+      </ul>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="getProgressWidth(i)"></div>
+      </div>
+      <p class="progress-text">Progress: {{ getProgressLevel(i) }}</p>
+    </div>
+  </div>
+
+  <!-- Skill Modal -->
+  <div class="modal"
+       id="skillModal"
+       [style.display]="showSkillModal ? 'block' : 'none'"
+       (click)="closeSkillModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeSkillModal()">&times;</span>
+      <h2 id="skillTitle">{{ selectedSkill }}</h2>
+      <p id="skillDescription">{{ selectedSkillDescription }}</p>
     </div>
   </div>
 </section>
