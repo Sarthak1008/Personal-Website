@@ -177,10 +177,14 @@
   animation: underwater 6s ease-in-out infinite 1s
 
 .footer-content-grid
-  display: grid
-  grid-template-columns: 1fr 1fr
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
   gap: 2rem
   margin-bottom: 2rem
+
+
 
 .footer-section
   background: rgba(255, 255, 255, 0.1)
@@ -207,6 +211,7 @@
   font-weight: 600
   margin-bottom: 1rem
   color: #FFF
+  
 
 .footer-section a
   color: #B0E0E6
