@@ -1,129 +1,436 @@
-.container
-  position: relative
-  width: 15rem
-  height: 4rem
-  display: flex
-  justify-content: center
-  align-items: center
-
-  a
-    display: flex
-    justify-content: center
-    align-items: center
-    width: 5rem
-    height: 5rem
-    padding-left: 2rem
-
-    .circle-img
-      width: 2rem
-      height: 2rem
-      border-radius: 50%
-      object-fit: cover
-      text-align: center
-
-.footer-main
-  background: #181c2a
-  padding: 2.5rem 0 1.2rem 0
-  color: #fff
-  display: flex
-  flex-direction: column
-  align-items: center
+// Footer Container
+.footer-container
   position: relative
   width: 100%
+  height: 600px
+  margin: 0
+  background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 30%, #4682B4 40%, #1e3c72 70%, #2a5298 100%)
+  border-radius: 0
+  overflow: hidden
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3)
+  cursor: pointer
 
-.footer-content
-  width: 100%
-  max-width: 1200px
-  display: flex
-  flex-direction: column
-  gap: 1.5rem
+// Sky and Clouds
+.sky
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  height: 30%
+  background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 100%)
+  z-index: 1
 
-  > div:first-child
-    display: flex
-    justify-content: space-between
-    align-items: flex-end
+.cloud
+  position: absolute
+  background: rgba(255, 255, 255, 0.8)
+  border-radius: 50px
+  opacity: 0.7
+  animation: float 20s infinite ease-in-out
+
+  &:before
+    content: ''
+    position: absolute
+    background: rgba(255, 255, 255, 0.8)
+    border-radius: 50px
+
+  &.cloud1
+    width: 60px
+    height: 20px
+    top: 20px
+    left: 10%
+    animation-delay: 0s
+
+    &:before
+      width: 40px
+      height: 40px
+      top: -15px
+      left: 10px
+
+  &.cloud2
+    width: 80px
+    height: 25px
+    top: 40px
+    right: 20%
+    animation-delay: -10s
+
+    &:before
+      width: 50px
+      height: 50px
+      top: -20px
+      right: 15px
+
+// Fishing Person
+.fishing-person
+  position: absolute
+  top: 15%
+  left: 15%
+  z-index: 10
+  animation: fishingBob 3s ease-in-out infinite
+
+.person-body
+  width: 40px
+  height: 60px
+  background: linear-gradient(45deg, #FF6B6B, #FF8E53)
+  border-radius: 20px 20px 5px 5px
+  position: relative
+
+.person-head
+  width: 30px
+  height: 30px
+  background: #FDBCB4
+  border-radius: 50%
+  position: absolute
+  top: -25px
+  left: 5px
+
+.hat
+  width: 35px
+  height: 15px
+  background: #8B4513
+  border-radius: 20px
+  position: absolute
+  top: -35px
+  left: 2.5px
+
+.fishing-rod
+  width: 3px
+  height: 120px
+  background: #8B4513
+  position: absolute
+  top: -20px
+  right: -15px
+  transform: rotate(45deg)
+  transform-origin: bottom
+
+.fishing-line
+  width: 1px
+  height: 200px
+  background: rgba(255, 255, 255, 0.8)
+  position: absolute
+  top: 30px
+  right: -13px
+  transform-origin: top
+  animation: fishingLine 4s ease-in-out infinite
+
+.hook
+  width: 8px
+  height: 8px
+  background: #C0C0C0
+  border-radius: 50%
+  position: absolute
+  bottom: -4px
+  left: -3.5px
+  animation: hookSwing 3s ease-in-out infinite
+
+// Water Surface
+.water-surface
+  position: absolute
+  top: 30%
+  left: 0
+  right: 0
+  height: 4px
+  background: rgba(255, 255, 255, 0.3)
+  z-index: 5
+  overflow: hidden
+
+.wave
+  position: absolute
+  top: 0
+  width: 200%
+  height: 100%
+  background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255, 255, 255, 0.2) 20px, rgba(255, 255, 255, 0.2) 40px)
+  animation: wave 3s linear infinite
+
+// Underwater Content
+.underwater-content
+  position: absolute
+  top: 34%
+  left: 0
+  right: 0
+  bottom: 0
+  padding: 2rem
+  color: white
+  z-index: 3
+
+.bubble
+  position: absolute
+  border-radius: 50%
+  background: rgba(255, 255, 255, 0.1)
+  border: 1px solid rgba(255, 255, 255, 0.2)
+  animation: bubbleRise linear infinite
+  pointer-events: none
 
 .footer-title
-  font-size: 1.4rem
+  font-size: 2.5rem
   font-weight: 700
-  letter-spacing: 1px
-  margin-bottom: 0.3rem
-  color: #fff
+  margin-bottom: 1rem
+  text-align: center
+  color: #FFF
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+  animation: underwater 6s ease-in-out infinite
 
 .footer-desc
-  font-size: 1rem
-  color: #b0b8c1
+  font-size: 1.2rem
+  text-align: center
+  margin-bottom: 2rem
+  opacity: 0.9
+  animation: underwater 6s ease-in-out infinite 1s
 
-.footer-quicklinks, .footer-connect
-  font-size: 1rem
-  color: #fff
+.footer-content-grid
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 2rem
+  margin-bottom: 2rem
 
-.footer-quicklinks a, .footer-connect a
-  color: #b0b8c1
-  text-decoration: none
-  margin: 0 0.2rem
-  transition: color 0.2s
+.footer-section
+  background: rgba(255, 255, 255, 0.1)
+  backdrop-filter: blur(10px)
+  padding: 2rem
+  border-radius: 15px
+  border: 1px solid rgba(255, 255, 255, 0.2)
+  transition: all 0.3s ease
+  animation: underwater 6s ease-in-out infinite
 
-.footer-quicklinks a:hover, .footer-connect a:hover
-  color: #ffd700
+  &:nth-child(2)
+    animation-delay: 2s
 
-hr
-  width: 100%
-  border: none
-  border-top: 1px solid #23263a
-  margin: 1.5rem 0 1rem 0
+  &:nth-child(3)
+    animation-delay: 4s
 
-.footer-socials
-  display: flex
-  gap: 1rem
+  &:hover
+    transform: translateY(-5px) scale(1.02)
+    background: rgba(255, 255, 255, 0.2)
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+
+.section-title
+  font-size: 2rem
+  font-weight: 600
   margin-bottom: 1rem
-  justify-content: center
+  color: #FFF
 
-.circle-img
-  width: 36px
-  height: 36px
-  border-radius: 50%
-  box-shadow: 0 1px 4px rgba(0,0,0,0.10)
-  transition: transform 0.2s, box-shadow 0.2s, border 0.2s
-  cursor: pointer
-  border: 2px solid transparent
-  background: #fff
+.footer-section a
+  color: #B0E0E6
+  text-decoration: none
+  transition: all 0.3s ease
+  display: inline-block
+  margin: 0.2rem 0.5rem 0.2rem 0
 
-.social.email:hover .circle-img
-  border-color: #EA4335
-
-.social.github:hover .circle-img
-  border-color: #333
-
-.social.linkedin:hover .circle-img
-  border-color: #0077b5
-
-.social.leetcode:hover .circle-img
-  border-color: #FFA116
-
-.social.call:hover .circle-img
-  border-color: #34A853
-
-.circle-img:hover
-  transform: scale(1.12)
-  box-shadow: 0 4px 12px rgba(0,0,0,0.18)
-
-.footer-address
-  display: flex
-  align-items: center
-  gap: 1rem
-  margin-bottom: 1.2rem
-  justify-content: center
-
-.address-details
-  display: flex
-  flex-direction: column
-  gap: 0.2rem
-  font-size: 1rem
-  color: #b0b8c1
+  &:hover
+    color: #87CEEB
+    transform: scale(1.1)
+    text-shadow: 0 0 10px rgba(135, 206, 235, 0.5)
 
 .footer-copyright
-  font-size: 0.95rem
-  color: #b0b8c1
-  margin-top: 0.5rem
   text-align: center
+  padding: 1rem
+  background: rgba(0, 0, 0, 0.2)
+  border-radius: 10px
+  font-size: 0.9rem
+  opacity: 0.8
+
+// Fish Swimming
+.fish
+  position: absolute
+  width: 30px
+  height: 20px
+  z-index: 2
+
+  &:before
+    content: '🐠'
+    font-size: 24px
+    display: block
+    animation: swim linear infinite
+
+  &.fish1
+    top: 45%
+    left: -50px
+    animation: swimRight 15s linear infinite
+
+  &.fish2
+    top: 65%
+    right: -50px
+    animation: swimLeft 20s linear infinite
+
+  &.fish3
+    top: 85%
+    left: -50px
+    animation: swimRight 18s linear infinite 5s
+
+// Ripple Effect
+.ripple
+  position: absolute
+  border-radius: 50%
+  border: 2px solid rgba(255, 255, 255, 0.6)
+  pointer-events: none
+  animation: rippleEffect 1s ease-out forwards
+
+// Seaweed
+.seaweed
+  position: absolute
+  bottom: 0
+  width: 8px
+  background: linear-gradient(to top, #228B22, #32CD32)
+  border-radius: 4px 4px 0 0
+  transform-origin: bottom
+  animation: seaweedSway 4s ease-in-out infinite
+
+  &.seaweed1
+    left: 10%
+    height: 80px
+    animation-delay: 0s
+
+  &.seaweed2
+    left: 25%
+    height: 60px
+    animation-delay: 1s
+
+  &.seaweed3
+    right: 15%
+    height: 90px
+    animation-delay: 2s
+
+  &.seaweed4
+    right: 30%
+    height: 70px
+    animation-delay: 3s
+
+// Animations
+@keyframes float
+  0%, 100%
+    transform: translateX(0) translateY(0)
+  25%
+    transform: translateX(10px) translateY(-5px)
+  50%
+    transform: translateX(20px) translateY(0)
+  75%
+    transform: translateX(10px) translateY(5px)
+
+@keyframes fishingBob
+  0%, 100%
+    transform: translateY(0)
+  50%
+    transform: translateY(-5px)
+
+@keyframes fishingLine
+  0%, 100%
+    transform: rotate(0deg)
+  50%
+    transform: rotate(3deg)
+
+@keyframes hookSwing
+  0%, 100%
+    transform: translateX(0)
+  50%
+    transform: translateX(5px)
+
+@keyframes wave
+  0%
+    transform: translateX(0)
+  100%
+    transform: translateX(-50%)
+
+@keyframes underwater
+  0%, 100%
+    transform: translateY(0)
+    opacity: 1
+  50%
+    transform: translateY(-3px)
+    opacity: 0.8
+
+@keyframes bubbleRise
+  0%
+    transform: translateY(0) scale(0)
+    opacity: 1
+  50%
+    opacity: 1
+  100%
+    transform: translateY(-400px) scale(1)
+    opacity: 0
+
+@keyframes swimRight
+  0%
+    transform: translateX(0) scaleX(1)
+  100%
+    transform: translateX(calc(100vw + 100px)) scaleX(1)
+
+@keyframes swimLeft
+  0%
+    transform: translateX(0) scaleX(-1)
+  100%
+    transform: translateX(calc(-100vw - 100px)) scaleX(-1)
+
+@keyframes seaweedSway
+  0%, 100%
+    transform: rotate(0deg)
+  25%
+    transform: rotate(3deg)
+  75%
+    transform: rotate(-3deg)
+
+@keyframes rippleEffect
+  0%
+    width: 0
+    height: 0
+    opacity: 1
+  100%
+    width: 100px
+    height: 100px
+    opacity: 0
+
+// Responsive Design
+@media (max-width: 768px)
+  .footer-content-grid
+    grid-template-columns: 1fr
+    gap: 1rem
+
+  .footer-title
+    font-size: 2rem
+
+  .footer-container
+    height: 500px
+
+  .fishing-person
+    left: 10%
+    transform: scale(0.8)
+
+// Existing styles remain same until underwater-content
+
+// Light Rays Effect
+.light-rays
+  position: absolute
+  top: 30%
+  left: 0
+  width: 100%
+  height: 70%
+  background: repeating-linear-gradient(transparent,rgba(255, 255, 255, 0.05) 2px,transparent 4px)
+  animation: lightRayMove 8s linear infinite
+  pointer-events: none
+  z-index: 2
+
+@keyframes lightRayMove
+  0%
+    transform: translateY(0)
+  100%
+    transform: translateY(-20px)
+
+// Extra Fish Animations
+.fish
+  position: absolute
+  z-index: 3
+  font-size: 24px
+  animation: swimRight 15s linear infinite
+
+.fish-left
+  animation: swimLeft 15s linear infinite
+
+@keyframes swimRight
+  0%
+    transform: translateX(-60px) scaleX(1)
+  100%
+    transform: translateX(calc(100vw + 60px)) scaleX(1)
+
+@keyframes swimLeft
+  0%
+    transform: translateX(calc(100vw + 60px)) scaleX(-1)
+  100%
+    transform: translateX(-60px) scaleX(-1)
