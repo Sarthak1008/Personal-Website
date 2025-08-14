@@ -1,178 +1,390 @@
-.skills-container
-  background: #fff
-  border-radius: 18px
-  box-shadow: 0 4px 24px rgba(0,0,0,0.10)
-  padding: 3rem 2rem
-  max-width: 1100px
-  margin: 2rem auto
-  color: #222
+// Variables - Matching your website's purple/blue theme
+$primary-gradient: linear-gradient(135deg, #6c63ff, #5a54d6, #4f46e5, #6366f1)
+$accent-gradient: linear-gradient(135deg, #6c63ff, #5a54d6)
+$secondary-gradient: linear-gradient(135deg, #818cf8, #a855f7)
+$success-gradient: linear-gradient(135deg, #10b981, #059669)
+$warning-gradient: linear-gradient(135deg, #f59e0b, #d97706)
+$card-bg: rgba(108, 99, 255, 0.08)
+$card-border: rgba(108, 99, 255, 0.15)
+$hover-border: rgba(108, 99, 255, 0.4)
+$text-primary: #1f2937
+$text-secondary: #6b7280
+$background-dark: #0f0f23
 
-.skills-header
-  text-align: center
-  margin-bottom: 2.5rem
+// Mixins
+@mixin glass-effect
+  background: $card-bg
+  backdrop-filter: blur(20px)
+  border: 1px solid $card-border
 
-  h2
-    font-size: 2.2rem
-    font-weight: 700
-    margin-bottom: 0.5rem
+@mixin hover-glow($color: #6c63ff)
+  box-shadow: 0 10px 30px rgba($color, 0.3)
 
-  .skills-underline
-    width: 60px
-    height: 4px
-    background: #4f46e5
-    margin: 0.5rem auto 1.5rem auto
-    border-radius: 2px
-
-  p
-    color: #555
-    font-size: 1.15rem
-
-.skills-grid
-  display: flex
-  flex-wrap: wrap
-  gap: 2rem
-  justify-content: center
-
-.skill-card
-  background: #f7f9fb
-  border-radius: 16px
-  box-shadow: 0 2px 12px rgba(79,70,229,0.08)
-  padding: 2rem 1.5rem
-  min-width: 280px
-  max-width: 340px
-  flex: 1 1 300px
-  display: flex
-  flex-direction: column
-  align-items: flex-start
-  transition: box-shadow 0.2s, transform 0.2s
-
-  &:hover
-    box-shadow: 0 8px 32px rgba(79,70,229,0.16)
-    transform: translateY(-4px)
-
-.skill-card-icon
-  font-size: 2.2rem
-  color: #4f46e5
-  margin-bottom: 1rem
-
-h3
-  font-size: 1.25rem
-  font-weight: 700
-  margin-bottom: 0.5rem
-
-.skill-card-desc
-  color: #555
-  font-size: 1rem
-  margin-bottom: 1.2rem
-
-.skill-list
-  display: flex
-  flex-wrap: wrap
-  gap: 0.7rem
-
-.skill-pill
-  background: #ede9fe
-  color: #4f46e5
-  font-size: 1rem
-  font-weight: 500
-  padding: 0.45em 1.1em
-  border-radius: 20px
-  margin-bottom: 0.5em
-  transition: background 0.2s, color 0.2s, transform 0.2s
-  cursor: pointer
-
-  &:hover
-    background: #4f46e5
-    color: #fff
-    transform: scale(1.07)
-
-.skills-bars
-  margin: 2.5rem auto 0 auto
-  max-width: 600px
-
-.skills-bar-row
-  display: flex
-  align-items: center
-  margin-bottom: 1.5rem
-
-.skills-bar-label
-  flex: 1
-  font-size: 1.08rem
-  font-weight: 500
-  color: #222
-
-.skills-bar-track
-  flex: 3
-  height: 10px
-  background: #e5e7eb
-  border-radius: 8px
-  margin: 0 1rem
+@mixin shimmer-effect
   position: relative
   overflow: hidden
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: -100%
+    width: 100%
+    height: 100%
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)
+    transition: left 0.5s
+  &:hover::before
+    left: 100%
 
-.skills-bar-fill
+// Reset and base styles
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+:host
+  display: block
+  background: $background-dark
+  color: white
+  font-family: 'Arial', sans-serif
+  min-height: 100vh
+  overflow-x: hidden
+
+// Floating background shapes
+.floating-shapes
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
   height: 100%
-  background: #4f46e5
-  border-radius: 8px
-  transition: width 0.6s
+  pointer-events: none
+  z-index: -1
 
-.skills-bar-value
-  width: 40px
-  text-align: right
-  font-size: 1rem
-  font-weight: 500
-  color: #4f46e5
+.shape
+  position: absolute
+  background: linear-gradient(45deg, rgba(108, 99, 255, 0.12), rgba(99, 102, 241, 0.08))
+  border-radius: 50%
+  animation: float 20s infinite linear
+  &:nth-child(1)
+    width: 80px
+    height: 80px
+    left: 10%
+    animation-delay: 0s
+  &:nth-child(2)
+    width: 60px
+    height: 60px
+    left: 20%
+    animation-delay: -5s
+  &:nth-child(3)
+    width: 100px
+    height: 100px
+    left: 70%
+    animation-delay: -10s
+  &:nth-child(4)
+    width: 40px
+    height: 40px
+    left: 80%
+    animation-delay: -15s
 
-@media (max-width: 900px)
-  .skills-grid
-    flex-direction: column
-    gap: 1.5rem
-  .skill-card
-    max-width: 100%
-    min-width: 220px
+// Main container
+.skills-container
+  max-width: 100vw
+  padding: 40px 20px
+  position: relative
 
-@media (max-width: 600px)
-  .skills-container
-    padding: 1.2rem 0.5rem
-  .skills-header h2
-    font-size: 1.4rem
-  .skills-bars
-    max-width: 100%
-    margin: 2rem 0 0 0
-  .skills-bar-row
-    flex-direction: column
-    align-items: flex-start
-    gap: 0.5rem
-    margin-bottom: 1rem
-  .skills-bar-label
-    margin-bottom: 0.2rem
-  .skills-bar-track
-    margin: 0 0 0.2rem 0
-  .skills-bar-value
-    width: auto
-    font-size: 0.95rem
+// Header section
+.skills-header
+  text-align: center
+  margin-bottom: 60px
+  position: relative
 
-.skill-pill
-  display: inline-flex
-  align-items: center
-  background: #ede9fe
-  color: #4f46e5
-  font-size: 1rem
-  font-weight: 500
-  padding: 0.45em 1.1em
-  border-radius: 20px
-  margin-bottom: 0.5em
-  transition: background 0.2s, color 0.2s, transform 0.2s
+.skills-title
+  font-size: 4rem
+  font-weight: 900
+  margin-bottom: 20px
+  background: $primary-gradient
+  background-size: 400% 400%
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+  animation: gradientFlow 4s ease-in-out infinite
   cursor: pointer
+  transition: all 0.3s ease
+  &:hover
+    transform: scale(1.05)
+    filter: drop-shadow(0 10px 20px rgba(78, 205, 196, 0.3))
+  &.animate
+    animation: gradientFlow 1s ease-in-out
+
+// View toggle buttons
+.view-toggle
+  display: flex
+  justify-content: center
+  gap: 15px
+  margin-bottom: 40px
+  flex-wrap: wrap
+
+.toggle-btn
+  @include glass-effect
+  @include shimmer-effect
+  border: 2px solid transparent
+  color: white
+  padding: 12px 24px
+  border-radius: 50px
+  cursor: pointer
+  font-size: 1rem
+  font-weight: bold
+  transition: all 0.3s ease
+  &:hover
+    border-color: #6c63ff
+    transform: translateY(-2px)
+    @include hover-glow(#6c63ff)
+  &.active
+    background: $accent-gradient
+    border-color: #6c63ff
+
+.skills-grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
+  gap: 15px
+  overflow-x: hidden
 
   &:hover
-    background: #4f46e5
-    color: #fff
-    transform: scale(1.07)
+    transform: translateY(-15px) rotateY(5deg) scale(1.02)
+    border-color: $hover-border
+    box-shadow: 0 25px 50px rgba(15, 15, 35, 0.6), 0 0 0 1px rgba(108, 99, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)
+    &::before
+      transform: translateX(100%)
+    .card-content
+      max-height: 400px
+      opacity: 1
+    .card-icon
+      transform: rotateY(180deg) scale(1.1)
+      &::before
+        opacity: 1
+        transform: rotate(45deg) translate(50%, 50%)
+  &.animate-in
+    animation: cardSlideIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
 
-.skill-icon
-  width: 20px
-  height: 20px
-  margin-right: 8px
-  vertical-align: middle
+// Card header
+.card-header
+  padding: 30px 30px 20px
+  text-align: center
+  position: relative
 
+.card-icon
+  width: 80px
+  height: 80px
+  background: $accent-gradient
+  border-radius: 20px
+  display: flex
+  align-items: center
+  justify-content: center
+  margin: 0 auto 20px
+  font-size: 2.5rem
+  transition: all 0.3s ease
+  position: relative
+  overflow: hidden
+  &::before
+    content: ''
+    position: absolute
+    top: -50%
+    left: -50%
+    width: 200%
+    height: 200%
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent)
+    transform: rotate(45deg)
+    transition: all 0.3s ease
+    opacity: 0
+
+.card-title
+  font-size: 1.4rem
+  font-weight: bold
+  margin-bottom: 15px
+  background: linear-gradient(135deg, #6c63ff, #818cf8)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+  transition: all 0.3s ease
+
+// Card content (expandable)
+.card-content
+  padding: 0 30px 30px
+  max-height: 0
+  overflow: hidden
+  transition: all 0.5s ease
+  opacity: 0
+
+// Skills grid content
+.skills-grid-content
+  max-height: 220px // Adjust as needed
+  overflow-y: auto
+  transition: max-height 0.4s, opacity 0.4s
+
+  &::-webkit-scrollbar
+    width: 8px
+    background: $card-bg
+    border-radius: 6px
+  &::-webkit-scrollbar-thumb
+    background: $accent-gradient
+    border-radius: 6px
+
+
+.skill-item
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 15px
+  background: rgba(255, 255, 255, 0.05)
+  border-radius: 15px
+  transition: all 0.3s ease
+  cursor: pointer
+  position: relative
+  overflow: hidden
+  border: 1px solid transparent
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.15), rgba(129, 140, 248, 0.1))
+    opacity: 0
+    transition: opacity 0.3s ease
+  &:hover
+    transform: translateY(-5px) scale(1.05)
+    border-color: $hover-border
+    box-shadow: 0 15px 30px rgba(15, 15, 35, 0.4)
+    &::before
+      opacity: 1
+    .skill-logo
+      transform: rotateY(360deg) scale(1.2)
+
+.skill-logo
+  width: 40px
+  height: 40px
+  margin-bottom: 10px
+  transition: all 0.3s ease
+  position: relative
+  z-index: 1
+
+.skill-name
+  font-size: 0.85rem
+  font-weight: 600
+  text-align: center
+  color: rgba(255, 255, 255, 0.9)
+  position: relative
+  z-index: 1
+
+.no-icon
+  width: 40px
+  height: 40px
+  background: $accent-gradient
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 1rem
+  font-weight: bold
+  margin-bottom: 10px
+
+// Logo view specific styles
+.logo-view
+  .card-content
+    max-height: 400px !important
+    opacity: 1 !important
+    padding: 20px 30px 30px
+  .skill-card
+    min-height: auto
+  .skills-grid-content
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr))
+    gap: 20px
+  .skill-item
+    padding: 20px 10px
+    background: rgba(255, 255, 255, 0.08)
+  .skill-logo
+    width: 50px
+    height: 50px
+  .skill-name
+    font-size: 0.75rem
+
+// Notification
+.notification
+  position: fixed
+  transform: translate(-50%, -50%)
+  background: $accent-gradient
+  color: white
+  padding: 15px 25px
+  border-radius: 25px
+  font-weight: bold
+  z-index: 1000
+  animation: popNotification 2s ease forwards
+  pointer-events: none
+
+// Responsive design
+@media (max-width: 768px)
+  .skills-title
+    font-size: 2.5rem
+  .skill-card
+    flex: 0 0 280px
+  .card-header
+    padding: 20px 20px 15px
+  .card-content
+    padding: 0 20px 20px
+  .view-toggle
+    flex-wrap: wrap
+    gap: 10px
+    .toggle-btn
+      padding: 10px 18px
+      font-size: 0.9rem
+
+@media (max-width: 480px)
+  .skills-container
+    padding: 20px 15px
+  .skills-title
+    font-size: 2rem
+  .skill-card
+    flex: 0 0 260px
+  .skills-grid
+    gap: 20px
+
+// Animations
+@keyframes gradientFlow
+  0%, 100%
+    background-position: 0% 50%
+  25%
+    background-position: 100% 50%
+  50%
+    background-position: 100% 100%
+  75%
+    background-position: 0% 100%
+
+@keyframes cardSlideIn
+  to
+    opacity: 1
+    transform: translateY(0)
+
+@keyframes float
+  0%
+    transform: translateY(100vh) rotate(0deg)
+    opacity: 0
+  10%
+    opacity: 1
+  90%
+    opacity: 1
+  100%
+    transform: translateY(-100px) rotate(360deg)
+    opacity: 0
+
+@keyframes popNotification
+  0%
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0
+  20%
+    transform: translate(-50%, -50%) scale(1.2)
+    opacity: 1
+  40%
+    transform: translate(-50%, -50%) scale(1)
+  100%
+    transform: translate(-50%, -50%) scale(0.8)
+    opacity: 0

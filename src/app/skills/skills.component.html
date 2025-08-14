@@ -1,56 +1,96 @@
+<div class="floating-shapes">
+  <div class="shape" *ngFor="let shape of floatingShapes; let i = index" 
+       [style.width.px]="shape.size" 
+       [style.height.px]="shape.size" 
+       [style.left.%]="shape.left" 
+       [style.animation-delay.s]="shape.delay">
+  </div>
+</div>
+
 <div class="skills-container">
   <div class="skills-header">
-    <h2 id="skills">My Skills</h2>
-    <div class="skills-underline"></div>
-    <p>
-      I've worked with a variety of technologies and frameworks. Here are the
-      key skills I bring to the table.
-    </p>
+    <h1 class="skills-title" (click)="triggerTitleAnimation()" 
+        [class.animate]="titleAnimating">
+      {{ pageTitle }}
+    </h1>
   </div>
-  <div class="skills-grid">
-    @for (category of skillCategories; track category.name) {
-    <div class="skill-card">
-      <div class="skill-card-icon">
-        @if (category.name === 'Frontend Development') {
-        <i class="fas fa-desktop"></i>
-        } @if (category.name === 'Backend Development') {
-        <i class="fas fa-server"></i>
-        } @if (category.name === 'Tools & Others') {
-        <i class="fas fa-tools"></i>
-        }
+
+  <div class="view-toggle">
+    <button 
+      class="toggle-btn" 
+      [class.active]="currentView === 'hover'"
+      (click)="switchView('hover')">
+      Hover View
+    </button>
+    <button 
+      class="toggle-btn" 
+      [class.active]="currentView === 'logo'"
+      (click)="switchView('logo')">
+      Logo View
+    </button>
+    <!-- <button 
+      class="toggle-btn" 
+      (click)="animateAll()">
+      🚀 Animate All
+    </button> -->
+    <button 
+      class="toggle-btn" 
+      (click)="shuffleSkills()">
+      🎲 Shuffle
+    </button>
+  </div>
+
+  <div 
+    class="skills-grid" 
+    #skillsGrid 
+    [class.logo-view]="currentView === 'logo'">
+    
+    <div 
+      class="skill-card" 
+      *ngFor="let category of displayedCategories; let i = index"
+      [style.animation-delay.s]="i * 0.1"
+      [class.animate-in]="animatingCards">
+      
+      <div class="card-header">
+        <div 
+          class="card-icon" 
+          [style.background]="category.gradient">
+          {{ category.icon }}
+        </div>
+        <h3 class="card-title">{{ category.name }}</h3>
       </div>
-      <h3>{{ category.name }}</h3>
-      <p class="skill-card-desc">
-        @if (category.name === 'Frontend Development') { Creating responsive,
-        accessible, and visually appealing user interfaces with modern
-        frameworks and tools. } @if (category.name === 'Backend Development') {
-        Building robust server-side applications, APIs, and scalable web
-        solutions. } @if (category.name === 'Tools & Others') { Utilizing modern
-        development tools and practices for efficient code delivery. }
-      </p>
-      <div class="skill-list">
-        @for (skill of category.skills; track skill.name) {
-        <span class="skill-pill">
-          <img
-            *ngIf="skill.icon"
-            [src]="skill.icon"
-            class="skill-icon"
-            alt="{{ skill.name }} logo"
-          />
-          {{ skill.name }}
-        </span>
-        }
+      
+      <div class="card-content">
+        <div class="skills-grid-content">
+          <div 
+            class="skill-item" 
+            *ngFor="let skill of category.skills"
+            (click)="onSkillClick(skill.name)">
+            
+            <img 
+              *ngIf="skill.icon; else noIconTemplate"
+              [src]="skill.icon" 
+              [alt]="skill.name" 
+              class="skill-logo"
+              (error)="onImageError($event, skill)">
+            
+            <ng-template #noIconTemplate>
+              <div class="no-icon">{{ getInitial(skill.name) }}</div>
+            </ng-template>
+            
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+        </div>
       </div>
     </div>
-    }
   </div>
-  <div class="skills-bars">
-    <div class="skills-bar-row" *ngFor="let bar of skillBars">
-      <div class="skills-bar-label">{{ bar.label }}</div>
-      <div class="skills-bar-track">
-        <div class="skills-bar-fill" [style.width.%]="bar.value"></div>
-      </div>
-      <div class="skills-bar-value">{{ bar.value }}%</div>
-    </div>
-  </div>
+</div>
+
+<!-- Notification Overlay -->
+<div 
+  class="notification" 
+  *ngIf="notification.show"
+  [style.top.%]="notification.y"
+  [style.left.%]="notification.x">
+  {{ notification.message }}
 </div>
